@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import "font-awesome/css/font-awesome.min.css";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import ScrollAnimation from "react-animate-on-scroll";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -9,6 +11,73 @@ export default function Home() {
   const screenWidth = useWindowDimensions();
   const [imagewidth, setimagewidth] = useState(500);
   const [imageheight, setimageheight] = useState(450);
+  const [showup, setshowup] = useState(false);
+  if (typeof window != "undefined") {
+    window.onscroll = function () {
+      scrollFun();
+    };
+  }
+  function scrollFun() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      setshowup(true);
+    } else {
+      setshowup(false);
+    }
+  }
+  const skillsData = [
+    { skill: "HTML", value: "85", in: "bounceInLeft", out: "bounceOutLeft" },
+    { skill: "CSS", value: "70", in: "bounceInRight", out: "bounceOutRight" },
+    {
+      skill: "Javascript",
+      value: "80",
+      in: "bounceInLeft",
+      out: "bounceOutRight",
+    },
+    {
+      skill: "Typescript",
+      value: "75",
+      in: "bounceInRight",
+      out: "bounceOutRight",
+    },
+    { skill: "React", value: "85", in: "bounceInLeft", out: "bounceOutLeft" },
+    {
+      skill: "Nextjs",
+      value: "75",
+      in: "bounceInRight",
+      out: "bounceOutRight",
+    },
+    { skill: "Nodejs", value: "80", in: "bounceInLeft", out: "bounceOutLeft" },
+    {
+      skill: "Expressjs",
+      value: "85",
+      in: "bounceInRight",
+      out: "bounceOutRight",
+    },
+    {
+      skill: "Mongodb",
+      value: "90",
+      in: "bounceInLeft",
+      out: "bounceOutLeft",
+    },
+    { skill: "MySql", value: "85", in: "bounceInRight", out: "bounceOutRight" },
+  ];
+  const workData = [
+    {
+      img: "/work1.png",
+      alt: "pricetracker",
+      link: "https://pricetracker.tech/",
+      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+    },
+    {
+      img: "/work2.png",
+      alt: "shoe",
+      link: "https://shoes28.vercel.app/",
+      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+    },
+  ];
   function getWindowDimensions() {
     if (typeof window != "undefined") {
       const { innerWidth: width, innerHeight: height } = window;
@@ -50,6 +119,10 @@ export default function Home() {
     if (screenWidth.width > 850) setburger(true);
     // else setburger(false);
   }, [screenWidth]);
+  function scrollTopFun() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -58,6 +131,10 @@ export default function Home() {
         <link
           href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
           rel="stylesheet"
+        ></link>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
         ></link>
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -159,9 +236,143 @@ export default function Home() {
                 <span>Scroll down </span>
                 <i className="bx bx-down-arrow-alt"></i>
               </div>
-              <div></div>
+              {showup && (
+                <div className="scrollup-div" onClick={scrollTopFun}>
+                  <i className="bx bxs-up-arrow-square"></i>
+                </div>
+              )}
             </div>
           )}
+        </section>
+        <section className="about" id="about">
+          <h2 className="section-title">About Me</h2>
+
+          <div className="about__container">
+            <Image src="/about2.png" alt="" width={400} height={400} />
+            <div className="about__text-div">
+              <p className="about__text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptate cum expedita quo culpa tempora, assumenda, quis fugiat
+                ut voluptates soluta, aut earum nemo recusandae cumque
+                perferendis! Recusandae alias accusamus atque.
+              </p>
+              <div className="about-number">
+                <div className="about-experience">
+                  <span className="about-year">07+</span>
+                  <span className="about-desc">Months experience</span>
+                </div>
+                <div className="about-experience">
+                  <span className="about-year">03+</span>
+                  <span className="about-desc">Completed projects</span>
+                </div>
+                <div className="about-experience">
+                  <span className="about-year">01+</span>
+                  <span className="about-desc">Companies worked</span>
+                </div>
+              </div>
+              <div className="about-download">
+                <a href="#" className="about-button">
+                  Download CV
+                  <i
+                    className="bx bx-download"
+                    style={{ marginLeft: "0.5rem" }}
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="skills" id="skills">
+          <h2 className="section-title">Skills</h2>
+          <div className="skills__container">
+            {skillsData.map((val, index) => (
+              <ScrollAnimation
+                key={index}
+                duration={1.5}
+                animateIn={val.in}
+                animateOut={val.out}
+                animateOnce={true}
+              >
+                <div className="skills_card">
+                  <div className="skills_circle">
+                    <CircularProgressbar
+                      value={val.value}
+                      text={`${val.value}%`}
+                      styles={buildStyles({
+                        textColor: "black",
+                        pathColor: "#ff0066",
+                        trailColor: "#fd98c0",
+                      })}
+                    />
+                  </div>
+                  <span
+                    className="skill_text"
+                    style={{
+                      fontSize: "1.2rem",
+                      fontWeight: "bolder",
+                      marginTop: "1rem",
+                    }}
+                  >
+                    {val.skill}
+                  </span>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </section>
+        <section className="work" id="work">
+          <h2 className="section-title">Work</h2>
+          <div className="work__container">
+            {workData.map((val, index) => (
+              <div className="work__img" key={index}>
+                <Image
+                  className="workImage"
+                  src={val.img}
+                  alt={val.alt}
+                  width={550}
+                  height={300}
+                />
+                <div className="work_button-div">
+                  <h4 style={{ color: "white" }}>{val.desc}</h4>
+                  <a
+                    href={val.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="work_button"
+                  >
+                    View Project
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="contact" id="contact">
+          <h2 className="section-title">Contact</h2>
+
+          <div className="contact__container">
+            <form action="" className="contact__form">
+              <input
+                type="text"
+                placeholder="Name"
+                className="contact__input"
+              />
+              <input
+                type="mail"
+                placeholder="Email"
+                className="contact__input"
+              />
+              <textarea
+                name=""
+                id=""
+                cols="0"
+                rows="10"
+                className="contact__input"
+                placeholder="Your message here"
+              ></textarea>
+             <button type="submit" className="contact_button">Send message <i className="bx bxs-send"></i></button>
+            </form>
+          </div>
         </section>
       </main>
     </div>
