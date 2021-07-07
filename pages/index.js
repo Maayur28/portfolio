@@ -70,12 +70,16 @@ export default function Home() {
       alt: "pricetracker",
       link: "https://pricetracker.tech/",
       desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      in: "fadeIn",
+      out: "fadeOut",
     },
     {
       img: "/work2.png",
       alt: "shoe",
       link: "https://shoes28.vercel.app/",
       desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      in: "fadeIn",
+      out: "fadeOut",
     },
   ];
   function getWindowDimensions() {
@@ -103,7 +107,6 @@ export default function Home() {
     return windowDimensions;
   }
   useEffect(() => {
-    console.log(screenWidth);
     if (screenWidth.width <= 850 && screenWidth.width > 724) {
       setimagewidth(400);
       setimageheight(350);
@@ -123,6 +126,27 @@ export default function Home() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
+  const sendEmail = (e) => {
+    const formData = new FormData(event.target);
+    e.preventDefault();
+    let data = {};
+    for (let [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+    fetch("/api/hello", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      console.log("Response received");
+      if (res.status === 200) {
+        console.log("Response succeeded!");
+      }
+    });
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -246,15 +270,18 @@ export default function Home() {
         </section>
         <section className="about" id="about">
           <h2 className="section-title">About Me</h2>
-
           <div className="about__container">
-            <Image src="/about2.png" alt="" width={400} height={400} />
+            <Image src="/about2.png" alt="" width={350} height={400} />
             <div className="about__text-div">
               <p className="about__text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptate cum expedita quo culpa tempora, assumenda, quis fugiat
-                ut voluptates soluta, aut earum nemo recusandae cumque
-                perferendis! Recusandae alias accusamus atque.
+                I&apos;m a Software Engineer currently working at Infosys.I
+                started my coding journey almost 5 year ago and now I&apos;m
+                working full time and doing freelance projects as a web
+                developer. You may have noticed from my portfolio that I&apos;m
+                obsessed with unique, custom design and user-friendly
+                functionality so hit me up with your weird artistic project
+                ideas or website proposals. I feel really lucky that I get paid
+                to do one of my biggest hobbies.
               </p>
               <div className="about-number">
                 <div className="about-experience">
@@ -324,26 +351,34 @@ export default function Home() {
           <h2 className="section-title">Work</h2>
           <div className="work__container">
             {workData.map((val, index) => (
-              <div className="work__img" key={index}>
-                <Image
-                  className="workImage"
-                  src={val.img}
-                  alt={val.alt}
-                  width={550}
-                  height={300}
-                />
-                <div className="work_button-div">
-                  <h4 style={{ color: "white" }}>{val.desc}</h4>
-                  <a
-                    href={val.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="work_button"
-                  >
-                    View Project
-                  </a>
+              <ScrollAnimation
+                key={index}
+                animateIn={val.in}
+                animateOut={val.out}
+                animateOnce={true}
+                duration={2.5}
+              >
+                <div className="work__img">
+                  <Image
+                    className="workImage"
+                    src={val.img}
+                    alt={val.alt}
+                    width={450}
+                    height={250}
+                  />
+                  <div className="work_button-div">
+                    <h4 style={{ color: "white" }}>{val.desc}</h4>
+                    <a
+                      href={val.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="work_button"
+                    >
+                      View Project
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         </section>
@@ -351,26 +386,34 @@ export default function Home() {
           <h2 className="section-title">Contact</h2>
 
           <div className="contact__container">
-            <form action="" className="contact__form">
+            <form className="contact__form" method="POST" onSubmit={sendEmail}>
               <input
                 type="text"
+                name="name"
                 placeholder="Name"
                 className="contact__input"
+                required={true}
               />
               <input
                 type="mail"
+                name="email"
                 placeholder="Email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 className="contact__input"
+                required={true}
               />
               <textarea
-                name=""
+                name="message"
                 id=""
                 cols="0"
                 rows="10"
                 className="contact__input"
                 placeholder="Your message here"
+                required={true}
               ></textarea>
-             <button type="submit" className="contact_button">Send message <i className="bx bxs-send"></i></button>
+              <button className="contact_button">
+                Send message <i className="bx bxs-send"></i>
+              </button>
             </form>
           </div>
         </section>

@@ -227,7 +227,7 @@ a {
 }
 .work__img{
   position: relative;
-  margin: 2rem;
+  margin: 2rem 1rem;
 }
 .bxs-up-arrow-square{
   color: #ff0066;
@@ -239,6 +239,7 @@ a {
   position: fixed;
   bottom: 5vh;
   right: 10vw;
+  z-index: 100;
 }
 .work__img:hover .workImage{
   filter: blur(7px);
@@ -260,7 +261,7 @@ a {
   align-items: center;
   position: absolute;
   top: 30%;
-  left: 25%;
+  left: 20%;
   opacity: 0;
 }
 /* Contact */
