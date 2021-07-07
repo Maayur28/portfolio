@@ -60,7 +60,7 @@ a {
   margin-left: 0.3rem;
 }
 .active {
-  color: #ff0066;
+  color: #EB0253;
 }
 .nav__logo {
   font-weight: bolder;
@@ -86,7 +86,7 @@ a {
   display: flex;
   flex-direction: column;
   margin-right: 2vw;
-  color: #ff0066;
+  color: #EB0253;
 }
 .linkedin {
   margin: 1.5rem 0;
@@ -102,14 +102,14 @@ a {
   font-size: 1.2rem;
 }
 .home__title-color {
-  color: #ff0066;
+  color: #EB0253;
 }
 .contact-div {
   margin-top: 50px;
 }
 .contact-button {
   padding: 8px 10px;
-  background-color: #ff0066;
+  background-color: #EB0253;
   border-radius: 5px;
   color: white;
 }
@@ -118,7 +118,7 @@ a {
   align-items: center;
 }
 .bxs-mouse {
-  color: #ff0066;
+  color: #EB0253;
   font-size: 1.9rem;
 }
 .bx-down-arrow-alt {
@@ -174,7 +174,7 @@ a {
 }
 .about-button {
   padding: 15px 25px;
-  background-color: #ff0066;
+  background-color: #EB0253;
   border-radius: 5px;
   color: white;
 }
@@ -239,7 +239,7 @@ a {
   margin: 2rem 1rem;
 }
 .bxs-up-arrow-square{
-  color: #ff0066;
+  color: #EB0253;
   font-size: 2rem;
   cursor: pointer;
   opacity: 0.5;
@@ -259,7 +259,7 @@ a {
 .work_button{
   padding: 10px 25px;
   width: 150px;
-  background-color: #ff0066;
+  background-color: #EB0253;
   border-radius: 5px;
   color: white;
 }
@@ -302,7 +302,7 @@ a {
   border: none;
   padding: 1rem 2rem;
   font-size: 1rem;
-  background-color: #ff0066;
+  background-color: #EB0253;
   color: white;
   cursor: pointer;
 }
@@ -455,7 +455,7 @@ a {
   }
   .about-button {
     padding: 10px 15px;
-    background-color: #ff0066;
+    background-color: #EB0253;
     border-radius: 5px;
     color: white;
   }
