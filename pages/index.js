@@ -283,6 +283,18 @@ export default function Home() {
                   ></i>
                 </a>
                 <a
+                  href="https://twitter.com/mayur__28"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="twitter"
+                  aria-label="twitter"
+                >
+                  <i
+                    className="bx bxl-twitter"
+                    style={{ fontSize: "1.5rem" }}
+                  ></i>
+                </a>
+                <a
                   href="https://github.com/Maayur28"
                   target="_blank"
                   rel="noreferrer"
@@ -302,8 +314,7 @@ export default function Home() {
                 <div className="home__web"> Web Developer</div>
                 <span>
                   I am a software engineer who specializes in building
-                  user-friendly websites and provide exceptional web
-                  experience.
+                  user-friendly websites and provide exceptional web experience.
                 </span>
                 <div className="contact-div">
                   <a href="#" className="contact-button">
