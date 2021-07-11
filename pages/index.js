@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -200,6 +201,15 @@ export default function Home() {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-97B8JN3F8V"
+        ></script>
+        <script>
+          window.dataLayer = window.dataLayer || []; function gtag()
+          {dataLayer.push(arguments)}
+          gtag('js', new Date()); gtag('config', 'G-97B8JN3F8V');
+        </script>
       </Head>
       <header className={styles.main}>
         <nav className="navbar">
