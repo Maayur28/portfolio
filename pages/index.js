@@ -299,7 +299,7 @@ export default function Home() {
                 <h1 className="home__title">
                   Hi, I&apos;am <span className="home__title-color">Mayur</span>
                 </h1>
-                <h5 className="home__web"> Web Developer</h5>
+                <div className="home__web"> Web Developer</div>
                 <span>
                   I am a software engineer who specializes in building
                   user-friendly websites and provide exceptional web
