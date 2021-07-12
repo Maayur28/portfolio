@@ -300,7 +300,7 @@ export default function Home() {
                 onClick={() => darkMode.toggle()}
                 style={{ marginLeft: "1rem", cursor: "pointer" }}
               >
-                {mounted && localStorage.getItem("darkMode") == "false" ? (
+                {mounted && localStorage.getItem("darkMode") == "true" ? (
                   <i className="bx bxs-sun"></i>
                 ) : (
                   <i className="bx bxs-moon"></i>
@@ -313,7 +313,7 @@ export default function Home() {
               onClick={() => darkMode.toggle()}
               style={{ cursor: "pointer" }}
             >
-              {darkMode.value ? (
+              {mounted && localStorage.getItem("darkMode") == "true" ? (
                 <i className="bx bxs-sun"></i>
               ) : (
                 <i className="bx bxs-moon"></i>
