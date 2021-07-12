@@ -379,7 +379,7 @@ a {
     position: fixed;
     background-color: white;
     z-index: 2;
-    bottom: 0;
+    bottom: 0%;
     justify-content: space-between;
   }
   .darknav {
