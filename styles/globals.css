@@ -234,7 +234,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  min-height: 92vh;
+  min-height: 100vh;
   margin: 8vh 0;
   align-items: center;
 }
@@ -632,6 +632,9 @@ a {
 }
 
 @media only screen and (max-width: 365px) {
+  .skills {
+    margin: 15vh 0;
+  }
   .skills_card {
     width: 120px;
     height: 120px;
@@ -664,6 +667,9 @@ a {
   }
 }
 @media only screen and (max-width: 324px) {
+  .skills {
+    margin: 20vh 0;
+  }
   .navitem {
     margin: 1rem 1.5rem;
   }
@@ -688,6 +694,9 @@ a {
   }
 }
 @media only screen and (max-width: 300px) {
+  .skills {
+    margin: 25vh 0;
+  }
   .work_button-div {
     font-size: 0.7rem;
     top: 30%;
