@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
 import Typed from "react-typed";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const darkMode = useDarkMode(false);
@@ -144,26 +146,48 @@ export default function Home() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-  const sendEmail = (e) => {
+  function show() {
+    toast.dark("Thank you for contacting", {
+      position: "bottom-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      progress: undefined,
+    });
+  }
+  const sendEmail = async (e) => {
     const formData = new FormData(event.target);
     e.preventDefault();
     let data = {};
     for (let [key, value] of formData.entries()) {
       data[key] = value;
     }
-    fetch("/api/hello", {
+    const res = await fetch("/api/hello", {
       method: "POST",
       headers: {
-        Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((res) => {
-      console.log("Response received");
-      if (res.status === 200) {
-        console.log("Response succeeded!");
-      }
     });
+    const datares = await res.json();
+    if (datares) {
+      document.getElementById("form").reset();
+      localStorage.getItem("darkMode") == "true"
+        ? toast(datares.message, {
+            position: "bottom-center",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            progress: undefined,
+          })
+        : toast.light(datares.message, {
+            position: "bottom-center",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            progress: undefined,
+          });
+    }
   };
   return (
     <>
@@ -268,7 +292,7 @@ export default function Home() {
             </li>
             <li className="navitem resume-download">
               <i className="bx bxs-book-open"></i>
-              <a href="#resume" className="navlink">
+              <a onClick={() => show()} className="navlink">
                 Resume
               </a>
             </li>
@@ -277,7 +301,7 @@ export default function Home() {
                 onClick={() => darkMode.toggle()}
                 style={{ marginLeft: "1rem", cursor: "pointer" }}
               >
-                {darkMode.value ? (
+                {mounted && localStorage.getItem("darkMode") == "false" ? (
                   <i className="bx bxs-sun"></i>
                 ) : (
                   <i className="bx bxs-moon"></i>
@@ -540,6 +564,7 @@ export default function Home() {
 
                 <div className="contact__container">
                   <form
+                    id="form"
                     className="contact__form"
                     method="POST"
                     onSubmit={sendEmail}
@@ -578,6 +603,7 @@ export default function Home() {
           </>
         )}
       </main>
+      <ToastContainer />
     </>
   );
 }
