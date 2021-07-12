@@ -6,6 +6,7 @@ body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  user-select: none;
 }
 body.light-mode {
   background-color: #fff;
@@ -24,6 +25,15 @@ a {
 }
 * {
   box-sizing: border-box;
+}
+.resume-download{
+  border: 2px dashed #eb0253;
+  color: #eb0253;
+  padding: 0 0.5rem;
+}
+.resume-download:hover{
+  background-color: #eb0253;
+  color: white;
 }
 .navbar {
   display: flex;
@@ -218,12 +228,6 @@ a {
   font-size: 2rem;
   font-weight: bolder;
 }
-.about-button {
-  padding: 15px 25px;
-  background-color: #eb0253;
-  border-radius: 5px;
-  color: white;
-}
 /* Skills */
 
 .skills {
@@ -404,6 +408,7 @@ a {
   }
   .about__container {
     /* background-color: red; */
+    position: relative;
     flex-direction: column;
     align-items: flex-start;
     height: 90vh;
@@ -422,9 +427,13 @@ a {
   .about-number {
     position: absolute;
     flex-direction: column;
-    left: 500px;
-    top: 111vh;
+    width: 50%;
+    left: 60%;
+    top: 0vh;
     margin-right: 2rem;
+  }
+  .about-experience{
+    margin-bottom: 2rem;
   }
   .about-download {
     margin-top: 20px;
@@ -479,6 +488,17 @@ a {
   .blobImage {
     height: 50vh;
   }
+  .about-number {
+    position: absolute;
+    flex-direction: column;
+    width: 30%;
+    left: 78%;
+    top: 0vh;
+    margin-right: 2rem;
+  }
+  .about-experience{
+    margin-bottom: 2rem;
+  }
 }
 @media only screen and (max-width: 620px) {
   .work__img {
@@ -506,6 +526,7 @@ a {
     position: unset;
     flex-direction: row;
     margin: 0;
+    width: 100%;
     justify-content: space-between;
   }
   .about-experience {

@@ -8,6 +8,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
+import Typed from "react-typed";
 
 export default function Home() {
   const darkMode = useDarkMode(false);
@@ -87,16 +88,16 @@ export default function Home() {
       alt: "pricetracker",
       link: "https://pricetracker.tech/",
       desc: "Reactjs, Nodejs, Expressjs, Mongodb",
-      in: "fadeIn",
-      out: "fadeOut",
+      in: "bounceInRight",
+      out: "bounceOutLeft",
     },
     {
       img: "/work2.png",
       alt: "shoe",
       link: "https://shoes28.vercel.app/",
       desc: "Reactjs, Nodejs, Expressjs, Mongodb",
-      in: "fadeIn",
-      out: "fadeOut",
+      in: "bounceInLeft",
+      out: "bounceOutRight",
     },
   ];
   function getWindowDimensions() {
@@ -204,6 +205,10 @@ export default function Home() {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <script
+          async
+          src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"
+        ></script>
       </Head>
       <header className={styles.main}>
         <nav
@@ -253,18 +258,18 @@ export default function Home() {
                 Work
               </a>
             </li>
-            <li className="navitem">
-              <i className="bx bxs-book-open"></i>
-              <a href="#resume" className="navlink">
-                Resume
-              </a>
-            </li>
             <li
               className={router == "/#contact" ? "navitem active" : "navitem"}
             >
               <i className="bx bxs-contact"></i>
               <a onClick={() => rout.push("#contact")} className="navlink">
                 Contact
+              </a>
+            </li>
+            <li className="navitem resume-download">
+              <i className="bx bxs-book-open"></i>
+              <a href="#resume" className="navlink">
+                Resume
               </a>
             </li>
             {burger && (
@@ -351,10 +356,21 @@ export default function Home() {
                 <h1 className="home__title">
                   Hi, I&apos;am <span className="home__title-color">Mayur</span>
                 </h1>
-                <div className="home__web"> Web Developer</div>
+                <div className="home__web">
+                  <Typed
+                    strings={["Web Developer", "Programmer", "Game Developer"]}
+                    typeSpeed={50}
+                    backSpeed={40}
+                    loop
+                    backDelay={2000}
+                  />
+                </div>
                 <span>
-                  I am a software engineer who specializes in building
-                  user-friendly websites and provide exceptional web experience.
+                  I am a software engineer who specializes in developing
+                  solutions that leverage on best practice technologies to
+                  deliver over the top user experience. I also occasionally
+                  develop small games that I&apos;ve played or challenged,
+                  though the frequency has been decreased lately.
                 </span>
                 <div className="contact-div">
                   <a
@@ -406,9 +422,11 @@ export default function Home() {
                     Infosys and doing freelance projects. You may have noticed
                     from my portfolio that I&apos;m obsessed with unique, custom
                     design and user-friendly functionality so hit me up with
-                    your weird artistic project ideas or website proposals. I
-                    feel really lucky that I get paid to do one of my biggest
-                    hobbies.
+                    your weird artistic project ideas or website proposals.I
+                    build very small (but cute, I think!) side projects that are
+                    either an attempt at &apos;art&apos;, or are a thing that I
+                    need in my life. I feel really lucky that I get paid to do
+                    one of my biggest hobbies.
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
@@ -423,15 +441,6 @@ export default function Home() {
                       <span className="about-year">01+</span>
                       <span className="about-desc">Companies worked</span>
                     </div>
-                  </div>
-                  <div className="about-download">
-                    <a href="#" className="about-button">
-                      Download CV
-                      <i
-                        className="bx bx-download"
-                        style={{ marginLeft: "0.5rem" }}
-                      ></i>
-                    </a>
                   </div>
                 </div>
               </div>
