@@ -87,7 +87,7 @@ export default function Home() {
   const workData = [
     {
       img: "/work1.png",
-      alt: "pricetracker",
+      alt: "pricetrackerwebsiteImage",
       link: "https://pricetracker.tech/",
       desc: "Reactjs, Nodejs, Expressjs, Mongodb",
       in: "bounceInRight",
@@ -95,7 +95,7 @@ export default function Home() {
     },
     {
       img: "/work2.png",
-      alt: "shoe",
+      alt: "shoewebsiteImage",
       link: "https://shoes28.vercel.app/",
       desc: "Reactjs, Nodejs, Expressjs, Mongodb",
       in: "bounceInLeft",
@@ -199,7 +199,7 @@ export default function Home() {
         <title>
           {router.length > 1
             ? router.charAt(2).toUpperCase() + router.slice(3)
-            : "Mayur Agarwal"}
+            : "Mayur Agarwal Web Developer-Portfolio"}
         </title>
         <meta
           name="description"
@@ -244,7 +244,6 @@ export default function Home() {
         >
           <div className="navbar-logo">
             <a onClick={() => rout.push("/")} className="nav__logo">
-              {/* <Image src="/portLogo.png" alt="Logo" width={30} height={20}/> */}
               MAYUR
             </a>
           </div>
@@ -393,8 +392,8 @@ export default function Home() {
                   I am a software engineer who specializes in developing
                   solutions that leverage on best practice technologies to
                   deliver over the top user experience. I also occasionally
-                  develop small games that I&apos;ve been played or curious about,
-                  though the frequency has been decreased lately.
+                  develop small games that I&apos;ve been played or curious
+                  about, though the frequency has been decreased lately.
                 </span>
                 <div className="contact-div">
                   <a
@@ -408,7 +407,7 @@ export default function Home() {
               <div className="blobImage">
                 <Image
                   src="/blobImage.png"
-                  alt=""
+                  alt="myImage"
                   width={imagewidth}
                   height={imageheight}
                   className="homeImage"
@@ -434,7 +433,7 @@ export default function Home() {
               <div className="about__container">
                 <Image
                   src="/about2.png"
-                  alt="aboutImage"
+                  alt="myPicture"
                   width={385}
                   height={385}
                   className="aboutImage"
