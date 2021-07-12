@@ -7,8 +7,10 @@ import "react-circular-progressbar/dist/styles.css";
 import ScrollAnimation from "react-animate-on-scroll";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import useDarkMode from "use-dark-mode";
 
 export default function Home() {
+  const darkMode = useDarkMode(false);
   const [burger, setburger] = useState(true);
   const screenWidth = useWindowDimensions();
   const [imagewidth, setimagewidth] = useState(500);
@@ -204,7 +206,13 @@ export default function Home() {
         />
       </Head>
       <header className={styles.main}>
-        <nav className="navbar">
+        <nav
+          className={
+            mounted && localStorage.getItem("darkMode") == "true"
+              ? "darknav"
+              : "navbar"
+          }
+        >
           <div className="navbar-logo">
             <a onClick={() => rout.push("/")} className="nav__logo">
               {/* <Image src="/portLogo.png" alt="Logo" width={30} height={20}/> */}
@@ -212,7 +220,13 @@ export default function Home() {
             </a>
           </div>
           <ul
-            className={burger ? "navmenu" : "navmenu-responsive"}
+            className={
+              burger
+                ? "navmenu"
+                : localStorage.getItem("darkMode") == "true"
+                ? "darknav-navmenu-responsive"
+                : "navmenu-responsive"
+            }
             id="nav-menu"
           >
             <li className={router == "/#home" ? "navitem active" : "navitem"}>
@@ -253,7 +267,31 @@ export default function Home() {
                 Contact
               </a>
             </li>
+            {burger && (
+              <li
+                onClick={() => darkMode.toggle()}
+                style={{ marginLeft: "1rem", cursor: "pointer" }}
+              >
+                {darkMode.value ? (
+                  <i className="bx bxs-sun"></i>
+                ) : (
+                  <i className="bx bxs-moon"></i>
+                )}
+              </li>
+            )}
           </ul>
+          {!burger && (
+            <div
+              onClick={() => darkMode.toggle()}
+              style={{ cursor: "pointer" }}
+            >
+              {darkMode.value ? (
+                <i className="bx bxs-sun"></i>
+              ) : (
+                <i className="bx bxs-moon"></i>
+              )}
+            </div>
+          )}
           <div
             className="navtoggle"
             id="nav-toggle"
@@ -319,7 +357,10 @@ export default function Home() {
                   user-friendly websites and provide exceptional web experience.
                 </span>
                 <div className="contact-div">
-                  <a href="#" className="contact-button">
+                  <a
+                    onClick={() => rout.push("/#contact")}
+                    className="contact-button"
+                  >
                     Contact Me <i className="bx bxs-send"></i>
                   </a>
                 </div>
@@ -412,11 +453,19 @@ export default function Home() {
                           <CircularProgressbar
                             value={val.value}
                             text={`${val.value}%`}
-                            styles={buildStyles({
-                              textColor: "black",
-                              pathColor: "#ff0066",
-                              trailColor: "#fd98c0",
-                            })}
+                            styles={buildStyles(
+                              darkMode.value
+                                ? {
+                                    textColor: "white",
+                                    pathColor: "#ff0066",
+                                    trailColor: "#fd98c0",
+                                  }
+                                : {
+                                    textColor: "black",
+                                    pathColor: "#ff0066",
+                                    trailColor: "#fd98c0",
+                                  }
+                            )}
                           />
                         </div>
                         <span
