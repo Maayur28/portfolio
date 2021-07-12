@@ -393,7 +393,7 @@ export default function Home() {
                   I am a software engineer who specializes in developing
                   solutions that leverage on best practice technologies to
                   deliver over the top user experience. I also occasionally
-                  develop small games that I&apos;ve played or challenged,
+                  develop small games that I&apos;ve been played or curious about,
                   though the frequency has been decreased lately.
                 </span>
                 <div className="contact-div">
