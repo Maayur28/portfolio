@@ -35,6 +35,24 @@ a {
   background-color: #eb0253;
   color: white;
 }
+.resume-download-responsive{
+  text-align: center;
+  width: 133px;
+  padding: 8px 10px;
+  background-color: #eb0253;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 1rem;
+}
+.home_button{
+  display: flex;
+  flex-direction:column-reverse ;
+  height: 25vh;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100vw;
+  flex-wrap: wrap;
+}
 .navbar {
   display: flex;
   justify-content: space-around;
@@ -159,9 +177,6 @@ a {
 }
 .home__title-color {
   color: #eb0253;
-}
-.contact-div {
-  margin-top: 50px;
 }
 .contact-button {
   padding: 8px 10px;
@@ -362,6 +377,9 @@ a {
   }
 }
 @media only screen and (max-width: 850px) {
+  .resume-download{
+    padding: 0.1rem 2rem;
+  }
   .navmenu {
     display: none;
   }

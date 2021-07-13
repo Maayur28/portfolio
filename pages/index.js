@@ -20,6 +20,7 @@ export default function Home() {
   const [imageheight, setimageheight] = useState(500);
   const [showup, setshowup] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [hover, sethover] = useState(false);
   const rout = useRouter();
   const [router, setrouter] = useState("");
   useEffect(() => {
@@ -289,12 +290,29 @@ export default function Home() {
                 Contact
               </a>
             </li>
-            <li className="navitem resume-download">
-              <i className="bx bxs-book-open"></i>
-              <a onClick={() => show()} className="navlink">
-                Resume
-              </a>
-            </li>
+            {burger && (
+              <li
+                className="navitem resume-download"
+                onMouseOver={() => sethover(true)}
+                onMouseLeave={() => sethover(false)}
+              >
+                {!hover ? (
+                  <>
+                    <i className="bx bxs-book-open"></i>
+                    <a onClick={() => show()} className="navlink">
+                      Resume
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <i className="bx bx-download"></i>
+                    <a onClick={() => show()} className="navlink">
+                      Download
+                    </a>
+                  </>
+                )}
+              </li>
+            )}
             {burger && (
               <li
                 onClick={() => darkMode.toggle()}
@@ -308,7 +326,7 @@ export default function Home() {
               </li>
             )}
           </ul>
-          {!burger && (
+          {screenWidth.width<=850  && (
             <div
               onClick={() => darkMode.toggle()}
               style={{ cursor: "pointer" }}
@@ -395,13 +413,38 @@ export default function Home() {
                   develop small games that I&apos;ve been played or curious
                   about, though the frequency has been decreased lately.
                 </span>
-                <div className="contact-div">
-                  <a
-                    onClick={() => rout.push("/#contact")}
-                    className="contact-button"
-                  >
-                    Contact Me <i className="bx bxs-send"></i>
-                  </a>
+                <div className="home_button">
+                  <div className="contact-div">
+                    <a
+                      onClick={() => rout.push("/#contact")}
+                      className="contact-button"
+                    >
+                      Contact Me <i className="bx bxs-send"></i>
+                    </a>
+                  </div>
+                  {screenWidth.width<=850 && (
+                    <div
+                      className="resume-download-responsive"
+                      onMouseOver={() => sethover(true)}
+                      onMouseLeave={() => sethover(false)}
+                    >
+                      {!hover ? (
+                        <>
+                          <i className="bx bxs-book-open"></i>
+                          <a onClick={() => show()} className="navlink">
+                            Resume
+                          </a>
+                        </>
+                      ) : (
+                        <>
+                          <i className="bx bx-download"></i>
+                          <a onClick={() => show()} className="navlink">
+                            Download
+                          </a>
+                        </>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="blobImage">
