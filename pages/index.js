@@ -326,7 +326,7 @@ export default function Home() {
               </li>
             )}
           </ul>
-          {screenWidth.width<=850  && (
+          {mounted && screenWidth.width<=850  && (
             <div
               onClick={() => darkMode.toggle()}
               style={{ cursor: "pointer" }}
@@ -422,7 +422,7 @@ export default function Home() {
                       Contact Me <i className="bx bxs-send"></i>
                     </a>
                   </div>
-                  {screenWidth.width<=850 && (
+                  {mounted && screenWidth.width<=850 && (
                     <div
                       className="resume-download-responsive"
                       onMouseOver={() => sethover(true)}
