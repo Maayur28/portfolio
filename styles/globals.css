@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 html,
 body {
   padding: 0;
@@ -26,16 +26,16 @@ a {
 * {
   box-sizing: border-box;
 }
-.resume-download{
+.resume-download {
   border: 2px dashed #eb0253;
   color: #eb0253;
   padding: 0 0.5rem;
 }
-.resume-download:hover{
+.resume-download:hover {
   background-color: #eb0253;
   color: white;
 }
-.resume-download-responsive{
+.resume-download-responsive {
   text-align: center;
   width: 133px;
   padding: 8px 10px;
@@ -44,9 +44,9 @@ a {
   color: white;
   margin-bottom: 1rem;
 }
-.home_button{
+.home_button {
   display: flex;
-  flex-direction:column-reverse ;
+  flex-direction: column-reverse;
   height: 25vh;
   align-items: flex-start;
   justify-content: center;
@@ -377,7 +377,7 @@ a {
   }
 }
 @media only screen and (max-width: 850px) {
-  .resume-download{
+  .resume-download {
     padding: 0.1rem 2rem;
   }
   .navmenu {
@@ -451,7 +451,7 @@ a {
     top: 0vh;
     margin-right: 2rem;
   }
-  .about-experience{
+  .about-experience {
     margin-bottom: 2rem;
   }
   .about-download {
@@ -517,7 +517,7 @@ a {
     top: 0vh;
     margin-right: 2rem;
   }
-  .about-experience{
+  .about-experience {
     margin-bottom: 2rem;
   }
 }
