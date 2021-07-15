@@ -299,14 +299,14 @@ export default function Home() {
                 {!hover ? (
                   <>
                     <i className="bx bxs-book-open"></i>
-                    <a onClick={() => show()} className="navlink">
+                    <a href="/Resume.pdf" download className="navlink">
                       Resume
                     </a>
                   </>
                 ) : (
                   <>
                     <i className="bx bx-download"></i>
-                    <a onClick={() => show()} className="navlink">
+                    <a href="/Resume.pdf" download className="navlink">
                       Download
                     </a>
                   </>
