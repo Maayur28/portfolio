@@ -207,6 +207,10 @@ export default function Home() {
         <meta property="og:url" content="https://mayuragarwal.in/"></meta>
         <meta property="og:title" content="Home – Default"></meta>
         <meta property="og:type" content="Portfolio"></meta>
+        <meta
+          name="google-site-verification"
+          content="Volj0Kd2XHw6v37sVFzLqBwrzEyHHmSuob_RJZhBVdY"
+        />
         <link
           href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
           rel="stylesheet"
