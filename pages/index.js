@@ -385,6 +385,18 @@ export default function Home() {
                     style={{ fontSize: "1.5rem" }}
                   ></i>
                 </a>
+                <a
+                  href="https://www.facebook.com/mayurag28"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="facebook"
+                  aria-label="facebook"
+                >
+                  <i
+                    className="bx bxl-facebook"
+                    style={{ fontSize: "1.5rem" }}
+                  ></i>
+                </a>
               </div>
               <div className="home__data">
                 <h1 className="home__title">
