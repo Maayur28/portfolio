@@ -147,15 +147,6 @@ export default function Home() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-  function show() {
-    toast.dark("Thank you for contacting", {
-      position: "bottom-center",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      progress: undefined,
-    });
-  }
   const sendEmail = async (e) => {
     const formData = new FormData(event.target);
     e.preventDefault();
@@ -299,9 +290,7 @@ export default function Home() {
                 {!hover ? (
                   <>
                     <i className="bx bxs-book-open"></i>
-                    <a href="/Resume.pdf" download className="navlink">
-                      Resume
-                    </a>
+                    <a className="navlink">Resume</a>
                   </>
                 ) : (
                   <>
@@ -431,14 +420,12 @@ export default function Home() {
                       {!hover ? (
                         <>
                           <i className="bx bxs-book-open"></i>
-                          <a onClick={() => show()} className="navlink">
-                            Resume
-                          </a>
+                          <a className="navlink">Resume</a>
                         </>
                       ) : (
                         <>
                           <i className="bx bx-download"></i>
-                          <a onClick={() => show()} className="navlink">
+                          <a a href="/Resume.pdf" download className="navlink">
                             Download
                           </a>
                         </>
