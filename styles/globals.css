@@ -1,4 +1,3 @@
-
 html,
 body {
   padding: 0;
@@ -42,14 +41,13 @@ a {
   background-color: #eb0253;
   border-radius: 5px;
   color: white;
-  margin-bottom: 1rem;
+  margin-left: 0.5rem;
 }
 .home_button {
   display: flex;
-  flex-direction: column-reverse;
-  height: 25vh;
-  align-items: flex-start;
-  justify-content: center;
+  height: 20vh;
+  align-items: center;
+  justify-content: flex-start;
   width: 100vw;
   flex-wrap: wrap;
 }
@@ -592,7 +590,7 @@ a {
 }
 @media only screen and (max-width: 450px) {
   .home__data {
-    width: 80%;
+    width: 80vw;
   }
   .skills_card {
     width: 150px;
@@ -685,6 +683,18 @@ a {
   }
 }
 @media only screen and (max-width: 324px) {
+  .home_button {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100vw;
+  }
+  .resume-download-responsive {
+    margin-left: 0rem;
+    margin-top: 1rem;
+  }
   .skills {
     margin: 20vh 0;
   }
