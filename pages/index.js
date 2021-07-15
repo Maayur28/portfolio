@@ -207,6 +207,99 @@ export default function Home() {
         <meta property="og:url" content="https://mayuragarwal.in/"></meta>
         <meta property="og:title" content="Home – Default"></meta>
         <meta property="og:type" content="Portfolio"></meta>
+        <meta name="robots" content="index, follow"></meta>
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/mayur28/image/upload/v1626356532/about2_k9zsdg.png"
+        ></meta>
+
+        <meta property="og:locale" content="en_US" />
+        {/* <link rel="canonical" href="https://mattfarley.ca"> */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@mayuragarwal" />
+        <meta name="twitter:creator" content="@mayuragarwal" />
+        <meta name="twitter:title" content="Mayur Agarwal" />
+        <meta
+          name="twitter:description"
+          content="I(Mayur Agarwal) am a software engineer who specializes in building
+        user-friendly websites/webapps and provide exceptional web experience."
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/mayur28/image/upload/v1626356532/about2_k9zsdg.png"
+        />
+        <meta name="twitter:image:alt" content="Mayur Agarwal" />
+        <meta content="https://github.com/Maayur28" property="og:see_also" />
+        <meta
+          content="https://www.linkedin.com/in/mayur28/"
+          property="og:see_also"
+        />
+        <meta
+          content="https://www.facebook.com/mayurag28"
+          property="og:see_also"
+        />
+        <meta content="https://twitter.com/mayur__28" property="og:see_also" />
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="57x57"
+          href="/apple-touch-icon-57x57.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="72x72"
+          href="/apple-touch-icon-72x72.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href="/apple-touch-icon-76x76.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="114x114"
+          href="/apple-touch-icon-114x114.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="120x120"
+          href="/apple-touch-icon-120x120.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/apple-touch-icon-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="152x152"
+          href="/apple-touch-icon-152x152.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon-180x180.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon-96x96.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <meta
           name="google-site-verification"
           content="Volj0Kd2XHw6v37sVFzLqBwrzEyHHmSuob_RJZhBVdY"
