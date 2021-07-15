@@ -488,6 +488,7 @@ a {
   .home {
     /* background-color: red; */
     width: 100vw;
+    margin: 0;
     flex-direction: column-reverse;
   }
   .linkedin {
@@ -500,8 +501,9 @@ a {
     position: absolute;
     flex-direction: row;
     width: 90vw;
+    margin-left: 0;
     top: 3vh;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .blobImage {
     height: 50vh;
@@ -683,6 +685,12 @@ a {
   }
 }
 @media only screen and (max-width: 324px) {
+  .linkedin {
+    margin: 0 2.5rem;
+  }
+  .github {
+    margin: 0 2.5rem;
+  }
   .home_button {
     display: flex;
     flex-direction: column;
