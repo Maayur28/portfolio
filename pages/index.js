@@ -188,6 +188,7 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
+        <title>Mayur Agarwal Web Developer-Portfolio</title>
         <title>
           {router.length > 1
             ? router.charAt(2).toUpperCase() + router.slice(3)
