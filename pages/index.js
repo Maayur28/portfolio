@@ -196,7 +196,7 @@ export default function Home() {
         <meta
           name="description"
           content="I(Mayur Agarwal) am a software engineer who specializes in building
-        user-friendly websites/webapps and provide exceptional web experience."
+        user-friendly websites/webapps to provide exceptional web experience."
         />
         <meta
           name="og:description"

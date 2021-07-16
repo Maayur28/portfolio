@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     });
     const mailData = {
       from: req.body.email,
-      to: "mayuragarwal2812@gmail.com",
+      to: process.env.sender,
       subject: `Message From ${req.body.name}`,
       text: req.body.message,
       html: `<div>${req.body.message}</div><p>Sent from:
