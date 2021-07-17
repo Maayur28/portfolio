@@ -27,6 +27,7 @@
         <li><a href="#run-the-development-server">Run the development server</a></li>
       </ul>
     </li>
+      <li><a href="#google-lighthouse-score">Google Lighthouse Score</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -77,6 +78,10 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+## Google Lighthouse Score
+
+![lightHouseScore][Tried in incognito mode to prevent interference of extensions](https://res.cloudinary.com/mayur28/image/upload/v1626498209/lighthouse_cmdzhh.png)
 
 ## Contact
 
