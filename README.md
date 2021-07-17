@@ -81,7 +81,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 ## Google Lighthouse Score
 
-![lightHouseScore][Tried in incognito mode to prevent interference of extensions](https://res.cloudinary.com/mayur28/image/upload/v1626498209/lighthouse_cmdzhh.png)
+![lightHouseScore](https://res.cloudinary.com/mayur28/image/upload/v1626498209/lighthouse_cmdzhh.png)
 
 ## Contact
 
