@@ -388,7 +388,7 @@ export default function Home() {
                 {!hover ? (
                   <>
                     <i className="bx bxs-book-open"></i>
-                    <a className="navlink">Resume</a>
+                    <span style={{cursor:'pointer'}} className="navlink">Resume</span>
                   </>
                 ) : (
                   <>
@@ -530,12 +530,12 @@ export default function Home() {
                       {!hover ? (
                         <>
                           <i className="bx bxs-book-open"></i>
-                          <a className="navlink">Resume</a>
+                          <span style={{cursor:'pointer'}} className="navlink">Resume</span>
                         </>
                       ) : (
                         <>
                           <i className="bx bx-download"></i>
-                          <a a href="/Resume.pdf" download className="navlink">
+                          <a href="/Resume.pdf" download className="navlink">
                             Download
                           </a>
                         </>
