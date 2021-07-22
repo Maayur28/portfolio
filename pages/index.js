@@ -482,6 +482,18 @@ export default function Home() {
                   ></i>
                 </a>
                 <a
+                  href="https://stackoverflow.com/users/14791240/mayur-28?tab=profile"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="stackoverflow"
+                  aria-label="stackoverflow"
+                >
+                  <i
+                    className="bx bxl-stack-overflow"
+                    style={{ fontSize: "1.5rem" }}
+                  ></i>
+                </a>
+                <a
                   href="https://www.facebook.com/mayurag28"
                   target="_blank"
                   rel="noreferrer"
@@ -500,7 +512,12 @@ export default function Home() {
                 </h1>
                 <div className="home__web">
                   <Typed
-                    strings={["Web Developer", "Programmer","API Developer","Game Developer"]}
+                    strings={[
+                      "Web Developer",
+                      "Programmer",
+                      "API Developer",
+                      "Game Developer",
+                    ]}
                     typeSpeed={50}
                     backSpeed={40}
                     loop
@@ -510,9 +527,9 @@ export default function Home() {
                 <span>
                   I am a software engineer who specializes in developing
                   solutions that leverage best-practice technologies to deliver
-                  a top user experience. I also occasionally develop apis and small games
-                  that I&apos;ve been played or curious about, though the frequency
-                  has been decreased lately.
+                  a top user experience. I also occasionally develop apis and
+                  small games that I&apos;ve been played or curious about,
+                  though the frequency has been decreased lately.
                 </span>
                 <div className="home_button">
                   <div className="contact-div">
@@ -588,9 +605,9 @@ export default function Home() {
                 <div className="about__text-div">
                   <p className="about__text">
                     I started my coding journey almost five years ago and now
-                    I'm working as a Software Engineer currently working at
-                    Infosys and doing freelance projects. You may have noticed
-                    from my portfolio that I&apos;m obsessed with unique, custom
+                    I&apos;m working as a Software Engineer currently working at
+                    Infosys and doing freelance projects. From my portfolio, you
+                    may have noticed that I&apos;m obsessed with unique, custom
                     design and user-friendly functionality so hit me up with
                     your weird project ideas or website proposals. I build very
                     small (but cute, I think!) side projects that are either an

@@ -163,6 +163,9 @@ a {
 .github {
   margin: 1.5rem 0;
 }
+.facebook {
+  margin: 1.5rem 0;
+}
 .home__title {
   font-size: 36px;
   margin: 0px;
@@ -497,13 +500,16 @@ a {
   .github {
     margin: 0 3rem;
   }
+  .facebook {
+    margin: 0 3rem;
+  }
   .home__social {
     position: absolute;
     flex-direction: row;
     width: 90vw;
     margin-left: 0;
     top: 3vh;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .blobImage {
     height: 50vh;
@@ -689,6 +695,9 @@ a {
     margin: 0 2.5rem;
   }
   .github {
+    margin: 0 2.5rem;
+  }
+  .facebook {
     margin: 0 2.5rem;
   }
   .home_button {
