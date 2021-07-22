@@ -388,7 +388,9 @@ export default function Home() {
                 {!hover ? (
                   <>
                     <i className="bx bxs-book-open"></i>
-                    <span style={{cursor:'pointer'}} className="navlink">Resume</span>
+                    <span style={{ cursor: "pointer" }} className="navlink">
+                      Resume
+                    </span>
                   </>
                 ) : (
                   <>
@@ -498,7 +500,7 @@ export default function Home() {
                 </h1>
                 <div className="home__web">
                   <Typed
-                    strings={["Web Developer", "Programmer", "Game Developer"]}
+                    strings={["Web Developer", "Programmer","API Developer","Game Developer"]}
                     typeSpeed={50}
                     backSpeed={40}
                     loop
@@ -507,10 +509,10 @@ export default function Home() {
                 </div>
                 <span>
                   I am a software engineer who specializes in developing
-                  solutions that leverage on best practice technologies to
-                  deliver over the top user experience. I also occasionally
-                  develop small games that I&apos;ve been played or curious
-                  about, though the frequency has been decreased lately.
+                  solutions that leverage best-practice technologies to deliver
+                  a top user experience. I also occasionally develop apis and small games
+                  that I&apos;ve been played or curious about, though the frequency
+                  has been decreased lately.
                 </span>
                 <div className="home_button">
                   <div className="contact-div">
@@ -530,7 +532,12 @@ export default function Home() {
                       {!hover ? (
                         <>
                           <i className="bx bxs-book-open"></i>
-                          <span style={{cursor:'pointer'}} className="navlink">Resume</span>
+                          <span
+                            style={{ cursor: "pointer" }}
+                            className="navlink"
+                          >
+                            Resume
+                          </span>
                         </>
                       ) : (
                         <>
@@ -580,16 +587,16 @@ export default function Home() {
                 />
                 <div className="about__text-div">
                   <p className="about__text">
-                    I started my coding journey almost 5 year ago and now
-                    I&apos;m working as a Software Engineer currently working at
+                    I started my coding journey almost five years ago and now
+                    I'm working as a Software Engineer currently working at
                     Infosys and doing freelance projects. You may have noticed
                     from my portfolio that I&apos;m obsessed with unique, custom
                     design and user-friendly functionality so hit me up with
-                    your weird artistic project ideas or website proposals.I
-                    build very small (but cute, I think!) side projects that are
-                    either an attempt at &apos;art&apos;, or are a thing that I
-                    need in my life. I feel really lucky that I get paid to do
-                    one of my biggest hobbies.
+                    your weird project ideas or website proposals. I build very
+                    small (but cute, I think!) side projects that are either an
+                    attempt at art or are a thing that I need in my life. I feel
+                    really lucky that I get paid to do one of my biggest
+                    hobbies.
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
