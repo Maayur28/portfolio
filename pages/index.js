@@ -527,7 +527,7 @@ export default function Home() {
                 <span>
                   I am a software engineer who specializes in developing
                   solutions that leverage best-practice technologies to deliver
-                  a top user experience. I also occasionally develop apis and
+                  a top user experience. I also occasionally develop APIs and
                   small games that I&apos;ve been played or curious about,
                   though the frequency has been decreased lately.
                 </span>
