@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
 import Typed from "react-typed";
 import { ToastContainer, toast } from "react-toastify";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
@@ -23,6 +25,7 @@ export default function Home() {
   const [hover, sethover] = useState(false);
   const rout = useRouter();
   const [router, setrouter] = useState("");
+  const [didVisible, setDidVisible] = useState(false);
   useEffect(() => {
     localStorage.setItem("path", rout.asPath);
     setrouter(rout.asPath);
@@ -617,15 +620,33 @@ export default function Home() {
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
-                      <span className="about-year">07+</span>
+                      <CountUp start={0} end={8} prefix="0" suffix="+" duration="1">
+                        {({ countUpRef, start }) => (
+                          <VisibilitySensor onChange={start} delayedCall>
+                            <span className="about-year" ref={countUpRef} />
+                          </VisibilitySensor>
+                        )}
+                      </CountUp>
                       <span className="about-desc">Months experience</span>
                     </div>
                     <div className="about-experience">
-                      <span className="about-year">03+</span>
+                    <CountUp start={0} end={3} prefix="0" suffix="+" duration="1">
+                        {({ countUpRef, start }) => (
+                          <VisibilitySensor onChange={start} delayedCall>
+                            <span className="about-year" ref={countUpRef} />
+                          </VisibilitySensor>
+                        )}
+                      </CountUp>
                       <span className="about-desc">Completed projects</span>
                     </div>
                     <div className="about-experience">
-                      <span className="about-year">01+</span>
+                    <CountUp start={0} end={1} prefix="0" suffix="+" duration="1">
+                        {({ countUpRef, start }) => (
+                          <VisibilitySensor onChange={start} delayedCall>
+                            <span className="about-year" ref={countUpRef} />
+                          </VisibilitySensor>
+                        )}
+                      </CountUp>
                       <span className="about-desc">Companies worked</span>
                     </div>
                   </div>
