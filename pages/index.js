@@ -311,10 +311,12 @@ export default function Home() {
         <link
           href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
           rel="stylesheet"
+          disabled
         ></link>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+          disabled
         ></link>
         <link
           rel="icon"
