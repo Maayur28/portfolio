@@ -82,7 +82,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 ## Google Lighthouse Score
 
 ![lightHouseScore](https://res.cloudinary.com/mayur28/image/upload/v1626498209/lighthouse_cmdzhh.png)
-
+Last updated on- 7/31/2021 at 10:50:27
 ## Contact
 
 Connect with me - [drop message](https://www.mayuragarwal.in/#contact)
