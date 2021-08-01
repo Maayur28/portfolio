@@ -622,7 +622,7 @@ export default function Home() {
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
-                      <CountUp start={0} end={8} prefix="0" suffix="+" duration="1">
+                      <CountUp start={0} end={9} prefix="0" suffix="+" duration="1">
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
