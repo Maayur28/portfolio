@@ -105,6 +105,14 @@ export default function Home() {
       in: "bounceInLeft",
       out: "bounceOutRight",
     },
+    {
+      img: "/ams.png",
+      alt: "amsImage",
+      link: "https://attendance-maayur28.vercel.app/",
+      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      in: "bounceInRight",
+      out: "bounceOutLeft",
+    },
   ];
   function getWindowDimensions() {
     if (typeof window != "undefined") {
@@ -621,7 +629,13 @@ export default function Home() {
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
-                      <CountUp start={0} end={9} prefix="0" suffix="+" duration="1">
+                      <CountUp
+                        start={0}
+                        end={10}
+                        prefix="0"
+                        suffix="+"
+                        duration="1"
+                      >
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
@@ -631,7 +645,13 @@ export default function Home() {
                       <span className="about-desc">Months experience</span>
                     </div>
                     <div className="about-experience">
-                    <CountUp start={0} end={3} prefix="0" suffix="+" duration="1">
+                      <CountUp
+                        start={0}
+                        end={4}
+                        prefix="0"
+                        suffix="+"
+                        duration="1"
+                      >
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
@@ -641,7 +661,13 @@ export default function Home() {
                       <span className="about-desc">Completed projects</span>
                     </div>
                     <div className="about-experience">
-                    <CountUp start={0} end={1} prefix="0" suffix="+" duration="1">
+                      <CountUp
+                        start={0}
+                        end={1}
+                        prefix="0"
+                        suffix="+"
+                        duration="1"
+                      >
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
