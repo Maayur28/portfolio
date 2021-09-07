@@ -632,7 +632,6 @@ export default function Home() {
                       <CountUp
                         start={0}
                         end={10}
-                        prefix="0"
                         suffix="+"
                         duration="1"
                       >
