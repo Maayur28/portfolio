@@ -7,7 +7,7 @@ export default function Custom404() {
         <a>
           <Image
             src="https://res.cloudinary.com/mayur28/image/upload/v1626360535/404img_yh2kzp.gif"
-            alt="Not found image"
+            alt="No found image"
             layout="fill"
             objectFit="contain"
           />
