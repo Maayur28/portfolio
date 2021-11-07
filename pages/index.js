@@ -631,7 +631,7 @@ export default function Home() {
                     <div className="about-experience">
                       <CountUp
                         start={0}
-                        end={10}
+                        end={1}
                         suffix="+"
                         duration="1"
                       >
@@ -641,7 +641,7 @@ export default function Home() {
                           </VisibilitySensor>
                         )}
                       </CountUp>
-                      <span className="about-desc">Months experience</span>
+                      <span className="about-desc">Years experience</span>
                     </div>
                     <div className="about-experience">
                       <CountUp
