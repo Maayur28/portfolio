@@ -407,7 +407,11 @@ export default function Home() {
                 ) : (
                   <>
                     <i className="bx bx-download"></i>
-                    <a href="/Resume.pdf" download className="navlink">
+                    <a
+                      href="https://res.cloudinary.com/mayur28/image/upload/v1636810736/Mayur_Agarwal_Resume_2_7_gxzggu.pdf"
+                      download
+                      className="navlink"
+                    >
                       Download
                     </a>
                   </>
@@ -629,12 +633,7 @@ export default function Home() {
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
-                      <CountUp
-                        start={0}
-                        end={1}
-                        suffix="+"
-                        duration="1"
-                      >
+                      <CountUp start={0} end={1} suffix="+" duration="1">
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
