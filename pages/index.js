@@ -173,6 +173,7 @@ export default function Home() {
       body: JSON.stringify(data),
     });
     const datares = await res.json();
+    console.log(datares);
     if (datares) {
       document.getElementById("form").reset();
       localStorage.getItem("darkMode") == "true"
@@ -183,7 +184,7 @@ export default function Home() {
             closeOnClick: true,
             progress: undefined,
           })
-        : toast.light(datares.message, {
+        : toast(datares.message, {
             position: "bottom-center",
             autoClose: 2500,
             hideProgressBar: false,
