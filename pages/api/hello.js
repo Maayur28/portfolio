@@ -1,30 +1,45 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 let nodemailer = require("nodemailer");
 require("dotenv").config();
-export default async function handler(req, res) {
+
+const someAsyncOperation = (email, password, sender, message, name,emailfrom) => {
   try {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.email,
-        pass: process.env.password,
+        user: emailfrom,
+        pass: password,
       },
     });
     const mailData = {
-      from: req.body.email,
-      to: process.env.sender,
-      subject: `Message From ${req.body.name}`,
-      text: req.body.message,
-      html: `<div>${req.body.message}</div><p>Sent from:
-    ${req.body.email}</p>`,
+      from: emailfrom,
+      to: sender,
+      subject: `Message From ${name}`,
+      text: message,
+      html: `<div>${message}</div><p>Sent from:
+    ${email}</p>`,
     };
     transporter.sendMail(mailData, function (err, info) {
-      if (!err) {
-        console.log("success");
-      }
+      console.log("iside", info);
+      if (info) return true;
+      else return false;
     });
   } catch (error) {
-    console.log(error);
+    console.log("error occured");
   }
-  res.status(200).json({message:"Thank you for contacting"})
+  return true;
+};
+
+export default function handler(req, res) {
+  const { emailfrom, password,sender } = process.env;
+  const { email,message, name } = req.body;
+  const result = someAsyncOperation(
+    email,
+    password,
+    sender,
+    message,
+    name,
+    emailfrom
+  );
+  res.status(200).send(result);
 }

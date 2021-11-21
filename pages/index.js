@@ -159,7 +159,7 @@ export default function Home() {
     document.documentElement.scrollTop = 0;
   }
   const sendEmail = async (e) => {
-    const formData = new FormData(event.target);
+    const formData = new FormData(e.target);
     e.preventDefault();
     let data = {};
     for (let [key, value] of formData.entries()) {
@@ -172,19 +172,17 @@ export default function Home() {
       },
       body: JSON.stringify(data),
     });
-    const datares = await res.json();
-    console.log(datares);
-    if (datares) {
+    if (res) {
       document.getElementById("form").reset();
       localStorage.getItem("darkMode") == "true"
-        ? toast(datares.message, {
+        ? toast("Message sent! Thank you for contacting", {
             position: "bottom-center",
             autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             progress: undefined,
           })
-        : toast(datares.message, {
+        : toast.dark("Message sent! Thank you for contacting", {
             position: "bottom-center",
             autoClose: 2500,
             hideProgressBar: false,
