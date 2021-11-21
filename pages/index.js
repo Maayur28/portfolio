@@ -530,7 +530,7 @@ export default function Home() {
                   <Typed
                     strings={[
                       "Web Developer",
-                      "Programmer",
+                      "Competitive Coder",
                       "API Developer",
                       "Game Developer",
                     ]}
@@ -612,7 +612,7 @@ export default function Home() {
               <h2 className="section-title">About Me</h2>
               <div className="about__container">
                 <Image
-                  src="/about2.png"
+                  src="/about3.jpg"
                   alt="myPicture"
                   width={385}
                   height={385}
