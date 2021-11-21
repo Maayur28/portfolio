@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     };
     transporter.sendMail(mailData, function (err, info) {
       if (!err) {
-        console.log(info);
+        console.log("success");
       }
     });
   } catch (error) {
