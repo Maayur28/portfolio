@@ -529,7 +529,7 @@ export default function Home() {
                   <Typed
                     strings={[
                       "Web Developer",
-                      "Competitive Coder",,
+                      "Competitive Coder",
                     ]}
                     typeSpeed={50}
                     backSpeed={40}
