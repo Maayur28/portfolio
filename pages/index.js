@@ -407,7 +407,7 @@ export default function Home() {
                   <>
                     <i className="bx bx-download"></i>
                     <a
-                      href="https://res.cloudinary.com/mayur28/image/upload/v1637934803/Mayur_Agarwal_Resume_2_10_g9ec0u.pdf"
+                      href="https://res.cloudinary.com/mayur28/image/upload/v1638011896/Mayur_Agarwal_Resume_rs4ufz.pdf"
                       download
                       className="navlink"
                     >
@@ -527,10 +527,7 @@ export default function Home() {
                 </h1>
                 <div className="home__web">
                   <Typed
-                    strings={[
-                      "Web Developer",
-                      "Competitive Coder",
-                    ]}
+                    strings={["Web Developer", "Competitive Coder"]}
                     typeSpeed={50}
                     backSpeed={40}
                     loop
@@ -656,12 +653,7 @@ export default function Home() {
                       <span className="about-desc">Completed projects</span>
                     </div>
                     <div className="about-experience">
-                      <CountUp
-                        start={0}
-                        end={1}
-                        prefix="0"
-                        duration="1"
-                      >
+                      <CountUp start={0} end={1} prefix="0" duration="1">
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
