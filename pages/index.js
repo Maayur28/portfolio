@@ -623,15 +623,14 @@ export default function Home() {
                 <div className="about__text-div">
                   <p className="about__text">
                     I started my coding journey almost five years ago and now
-                    I&apos;m working as a Software Engineer currently working at
-                    Infosys and doing freelance projects. From my portfolio, you
-                    may have noticed that I&apos;m obsessed with unique, custom
-                    design and user-friendly functionality so hit me up with
-                    your weird project ideas or website proposals. I build very
-                    small (but cute, I think!) side projects that are either an
-                    attempt at art or are a thing that I need in my life. I feel
-                    really lucky that I get paid to do one of my biggest
-                    hobbies.
+                    I&apos;m working as a Power Programmer at Infosys. From my
+                    portfolio, you may have noticed that I&apos;m obsessed with
+                    unique, custom design and user-friendly functionality so hit
+                    me up with your weird project ideas or website proposals. I
+                    build very small (but cute, I think!) side projects that are
+                    either an attempt at art or are a thing that I need in my
+                    life. I feel really lucky that I get paid to do one of my
+                    biggest hobbies.
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
