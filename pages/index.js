@@ -93,33 +93,37 @@ export default function Home() {
       img: "/work1.png",
       alt: "pricetrackerwebsiteImage",
       link: "https://pricetracker.tech/",
-      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInRight",
       out: "bounceOutLeft",
+      color: "white",
     },
     {
       img: "/work2.png",
       alt: "shoewebsiteImage",
       link: "https://shoes28.vercel.app/",
-      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInLeft",
       out: "bounceOutRight",
+      color: "white",
     },
     {
       img: "/ams.png",
       alt: "amsImage",
       link: "https://attendance-maayur28.vercel.app/",
-      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInRight",
       out: "bounceOutLeft",
+      color: "black",
     },
     {
       img: "/trackdsa.png",
       alt: "trackDSA",
       link: "https://trackdsa.vercel.app/",
-      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInLeft",
       out: "bounceOutRight",
+      color: "black",
     },
   ];
   function getWindowDimensions() {
@@ -415,7 +419,7 @@ export default function Home() {
                   <>
                     <i className="bx bx-download"></i>
                     <a
-                      href="https://res.cloudinary.com/mayur28/image/upload/v1638016706/Mayur_Agarwal_Resume_fvby3o.pdf"
+                      href="https://res.cloudinary.com/mayur28/image/upload/v1640235656/MayurAgarwal_Resume_syrhae.pdf"
                       download
                       className="navlink"
                     >
@@ -743,7 +747,11 @@ export default function Home() {
                         />
                         <div className="work_button-div">
                           <span
-                            style={{ color: "white", marginBottom: "1rem" }}
+                            style={{
+                              color: val.color,
+                              marginBottom: "1rem",
+                              fontWeight: "bold",
+                            }}
                           >
                             {val.desc}
                           </span>
