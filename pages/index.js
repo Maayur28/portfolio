@@ -113,6 +113,14 @@ export default function Home() {
       in: "bounceInRight",
       out: "bounceOutLeft",
     },
+    {
+      img: "/trackdsa.png",
+      alt: "trackDSA",
+      link: "https://trackdsa.vercel.app/",
+      desc: "Reactjs, Nodejs, Expressjs, Mongodb",
+      in: "bounceInLeft",
+      out: "bounceOutRight",
+    },
   ];
   function getWindowDimensions() {
     if (typeof window != "undefined") {
