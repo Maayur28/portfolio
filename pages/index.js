@@ -4,7 +4,6 @@ import styles from "../styles/Home.module.css";
 import Analytics from "../googleAnalytics";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import ScrollAnimation from "react-animate-on-scroll";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
@@ -13,8 +12,10 @@ import { ToastContainer, toast } from "react-toastify";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import "react-toastify/dist/ReactToastify.css";
+import { motion, useViewportScroll } from "framer-motion";
 
 export default function Home() {
+  const { scrollYProgress } = useViewportScroll();
   const darkMode = useDarkMode(false);
   const [burger, setburger] = useState(true);
   const screenWidth = useWindowDimensions();
@@ -25,7 +26,7 @@ export default function Home() {
   const [hover, sethover] = useState(false);
   const rout = useRouter();
   const [router, setrouter] = useState("");
-  const [didVisible, setDidVisible] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("path", rout.asPath);
     setrouter(rout.asPath);
@@ -682,45 +683,48 @@ export default function Home() {
                 <h2 className="section-title">Skills</h2>
                 <div className="skills__container">
                   {skillsData.map((val, index) => (
-                    <ScrollAnimation
+                    <motion.div
+                      drag
+                      dragSnapToOrigin={true}
+                      dragTransition={{
+                        bounceStiffness: 300,
+                        bounceDamping: 10,
+                      }}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      className="skills_card"
                       key={index}
-                      duration={1.5}
-                      animateIn={val.in}
-                      animateOut={val.out}
-                      animateOnce={true}
                     >
-                      <div className="skills_card">
-                        <div className="skills_circle">
-                          <CircularProgressbar
-                            value={val.value}
-                            text={`${val.value}%`}
-                            styles={buildStyles(
-                              darkMode.value
-                                ? {
-                                    textColor: "white",
-                                    pathColor: "#ff0066",
-                                    trailColor: "#fd98c0",
-                                  }
-                                : {
-                                    textColor: "black",
-                                    pathColor: "#ff0066",
-                                    trailColor: "#fd98c0",
-                                  }
-                            )}
-                          />
-                        </div>
-                        <span
-                          className="skill_text"
-                          style={{
-                            fontSize: "1.2rem",
-                            fontWeight: "bolder",
-                            marginTop: "1rem",
-                          }}
-                        >
-                          {val.skill}
-                        </span>
+                      <div className="skills_circle">
+                        <CircularProgressbar
+                          value={val.value}
+                          text={`${val.value}%`}
+                          styles={buildStyles(
+                            darkMode.value
+                              ? {
+                                  textColor: "white",
+                                  pathColor: "#ff0066",
+                                  trailColor: "#fd98c0",
+                                }
+                              : {
+                                  textColor: "black",
+                                  pathColor: "#ff0066",
+                                  trailColor: "#fd98c0",
+                                }
+                          )}
+                        />
                       </div>
-                    </ScrollAnimation>
+                      <span
+                        className="skill_text"
+                        style={{
+                          fontSize: "1.2rem",
+                          fontWeight: "bolder",
+                          marginTop: "1rem",
+                        }}
+                      >
+                        {val.skill}
+                      </span>
+                    </motion.div>
                   ))}
                 </div>
               </>
@@ -730,42 +734,44 @@ export default function Home() {
                 <h2 className="section-title">Work</h2>
                 <div className="work__container">
                   {workData.map((val, index) => (
-                    <ScrollAnimation
+                    <motion.div
+                      initial="hidden"
+                      whileInView="visible"
+                      transition={{ duration: 0.7 }}
+                      variants={{
+                        visible: { opacity: 1, scale: 1 },
+                        hidden: { opacity: 0, scale: 0 },
+                      }}
+                      className="work__img"
                       key={index}
-                      animateIn={val.in}
-                      animateOut={val.out}
-                      animateOnce={true}
-                      duration={2.5}
                     >
-                      <div className="work__img">
-                        <Image
-                          className="workImage"
-                          src={val.img}
-                          alt={val.alt}
-                          width={450}
-                          height={250}
-                        />
-                        <div className="work_button-div">
-                          <span
-                            style={{
-                              color: val.color,
-                              marginBottom: "1rem",
-                              fontWeight: "bold",
-                            }}
-                          >
-                            {val.desc}
-                          </span>
-                          <a
-                            href={val.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="work_button"
-                          >
-                            View Project
-                          </a>
-                        </div>
+                      <Image
+                        className="workImage"
+                        src={val.img}
+                        alt={val.alt}
+                        width={450}
+                        height={250}
+                      />
+                      <div className="work_button-div">
+                        <span
+                          style={{
+                            color: val.color,
+                            marginBottom: "1rem",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {val.desc}
+                        </span>
+                        <a
+                          href={val.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="work_button"
+                        >
+                          View Project
+                        </a>
                       </div>
-                    </ScrollAnimation>
+                    </motion.div>
                   ))}
                 </div>
               </>
