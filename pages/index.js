@@ -536,7 +536,7 @@ export default function Home() {
               </div>
               <div className="home__data">
                 <h1 className="home__title">
-                  Hi, I&apos;am <span className="home__title-color">Mayur</span>
+                  Hi, I&apos;m <span className="home__title-color">Mayur</span>
                 </h1>
                 <div className="home__web">
                   <Typed
@@ -551,8 +551,9 @@ export default function Home() {
                   I am a software engineer who specializes in developing
                   solutions that leverage best-practice technologies to deliver
                   a top user experience. I also occasionally develop APIs and
-                  small games that I&apos;ve been played or curious about,
-                  though the frequency has been decreased lately.
+                  small websites that I&apos;ve been curious about, also I used
+                  to develop small games though the frequency has been decreased
+                  lately.
                 </span>
                 <div className="home_button">
                   <div className="contact-div">
