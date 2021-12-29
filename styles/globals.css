@@ -163,8 +163,11 @@ a {
 .github {
   margin: 1.5rem 0;
 }
-.facebook {
+.codechef {
   margin: 1.5rem 0;
+}
+.codechefImage {
+  color: #eb0253;
 }
 .home__title {
   font-size: 36px;
@@ -498,7 +501,7 @@ a {
   .github {
     margin: 0 3rem;
   }
-  .facebook {
+  .codechef {
     margin: 0 3rem;
   }
   .home__social {
@@ -695,7 +698,7 @@ a {
   .github {
     margin: 0 2.5rem;
   }
-  .facebook {
+  .codechef {
     margin: 0 2.5rem;
   }
   .home_button {

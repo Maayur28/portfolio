@@ -522,14 +522,14 @@ export default function Home() {
                   ></i>
                 </a>
                 <a
-                  href="https://www.facebook.com/mayurag28"
+                  href="https://www.codechef.com/users/mayur_2812"
                   target="_blank"
                   rel="noreferrer"
-                  className="facebook"
-                  aria-label="facebook"
+                  className="codechef"
+                  aria-label="codechef"
                 >
                   <i
-                    className="bx bxl-facebook"
+                    className="bx bx-code-alt"
                     style={{ fontSize: "1.5rem" }}
                   ></i>
                 </a>
