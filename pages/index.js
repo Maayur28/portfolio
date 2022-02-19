@@ -19,8 +19,8 @@ export default function Home() {
   const darkMode = useDarkMode(false);
   const [burger, setburger] = useState(true);
   const screenWidth = useWindowDimensions();
-  const [imagewidth, setimagewidth] = useState(500);
-  const [imageheight, setimageheight] = useState(500);
+  const [imagewidth, setimagewidth] = useState(400);
+  const [imageheight, setimageheight] = useState(400);
   const [showup, setshowup] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [hover, sethover] = useState(false);
@@ -94,37 +94,45 @@ export default function Home() {
       img: "/work1.png",
       alt: "pricetrackerwebsiteImage",
       link: "https://pricetracker.tech/",
+      title: "Price Tracker",
       desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInRight",
       out: "bounceOutLeft",
       color: "white",
+      titlecolor: "#eb0253",
     },
     {
       img: "/work2.png",
       alt: "shoewebsiteImage",
       link: "https://shoes28.vercel.app/",
+      title: "Ecommerce Shoe",
       desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInLeft",
       out: "bounceOutRight",
       color: "white",
+      titlecolor: "#eb0253",
     },
     {
       img: "/ams.png",
       alt: "amsImage",
       link: "https://attendance-maayur28.vercel.app/",
+      title: "Attendance Management System",
       desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInRight",
       out: "bounceOutLeft",
       color: "black",
+      titlecolor: "#eb0253",
     },
     {
       img: "/trackdsa.png",
       alt: "trackDSA",
       link: "https://trackdsa.vercel.app/",
+      title: "Track DSA",
       desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInLeft",
       out: "bounceOutRight",
       color: "black",
+      titlecolor: "#eb0253",
     },
   ];
   function getWindowDimensions() {
@@ -153,16 +161,16 @@ export default function Home() {
   }
   useEffect(() => {
     if (screenWidth.width <= 850 && screenWidth.width > 724) {
-      setimagewidth(400);
-      setimageheight(400);
+      setimagewidth(200);
+      setimageheight(200);
     }
     if (screenWidth.width <= 724) {
-      setimagewidth(400);
-      setimageheight(400);
+      setimagewidth(250);
+      setimageheight(250);
     }
     if (screenWidth.width > 850) {
-      setimagewidth(500);
-      setimageheight(500);
+      setimagewidth(300);
+      setimageheight(300);
     }
     if (screenWidth.width > 850) setburger(true);
     // else setburger(false);
@@ -594,7 +602,7 @@ export default function Home() {
               </div>
               <div className="blobImage">
                 <Image
-                  src="/blobImage.png"
+                  src="/about3.jpg"
                   alt="myImage"
                   width={imagewidth}
                   height={imageheight}
@@ -620,10 +628,10 @@ export default function Home() {
               <h2 className="section-title">About Me</h2>
               <div className="about__container">
                 <Image
-                  src="/about3.jpg"
+                  src="/m4.gif"
                   alt="myPicture"
-                  width={385}
-                  height={385}
+                  width={350}
+                  height={350}
                   className="aboutImage"
                 />
                 <div className="about__text-div">
@@ -754,6 +762,16 @@ export default function Home() {
                         height={250}
                       />
                       <div className="work_button-div">
+                        <div
+                          style={{
+                            color: val.titlecolor,
+                            marginBottom: "2rem",
+                            fontWeight: "bolder",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {val.title}
+                        </div>
                         <span
                           style={{
                             color: val.color,

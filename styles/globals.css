@@ -513,8 +513,8 @@ a {
     justify-content: center;
   }
   .blobImage {
-    height: 50vh;
-    margin-top: 2rem;
+    height: 40vh !important;
+    margin-top: 3.5rem;
   }
   .about-number {
     position: absolute;
@@ -678,9 +678,6 @@ a {
   .navitem {
     margin: 1rem 2rem;
   }
-  .blobImage {
-    height: 50vh;
-  }
   .work_button {
     padding: 5px 15px;
     width: 100px;
@@ -725,9 +722,6 @@ a {
   }
   .home__web {
     font-size: 0.9rem;
-  }
-  .blobImage {
-    height: 40vh;
   }
   .work_button {
     padding: 5px 15px;
