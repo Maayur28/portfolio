@@ -146,7 +146,7 @@ a {
   align-items: center;
 }
 .homeImage {
-  aspect-ratio: 500/500;
+  aspect-ratio: 400/400;
 }
 .home__data {
   width: 35%;
@@ -205,6 +205,9 @@ a {
   display: flex;
   width: 100vw;
   justify-content: space-around;
+}
+.blobImage {
+  margin-top: -50px;
 }
 /* About */
 .aboutImage {
@@ -513,8 +516,8 @@ a {
     justify-content: center;
   }
   .blobImage {
-    height: 40vh !important;
-    margin-top: 3.5rem;
+    height: 50vh !important;
+    margin-top: 2.5rem;
   }
   .about-number {
     position: absolute;

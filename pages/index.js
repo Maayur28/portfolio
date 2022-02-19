@@ -161,16 +161,16 @@ export default function Home() {
   }
   useEffect(() => {
     if (screenWidth.width <= 850 && screenWidth.width > 724) {
-      setimagewidth(200);
-      setimageheight(200);
+      setimagewidth(400);
+      setimageheight(400);
     }
     if (screenWidth.width <= 724) {
-      setimagewidth(250);
-      setimageheight(250);
+      setimagewidth(350);
+      setimageheight(350);
     }
     if (screenWidth.width > 850) {
-      setimagewidth(300);
-      setimageheight(300);
+      setimagewidth(400);
+      setimageheight(400);
     }
     if (screenWidth.width > 850) setburger(true);
     // else setburger(false);
@@ -602,7 +602,7 @@ export default function Home() {
               </div>
               <div className="blobImage">
                 <Image
-                  src="/about3.jpg"
+                  src="/imgblob.png"
                   alt="myImage"
                   width={imagewidth}
                   height={imageheight}
