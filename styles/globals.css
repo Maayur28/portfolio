@@ -171,7 +171,7 @@ a {
 }
 .home__title {
   font-size: 36px;
-  margin: 0px;
+  margin: 0;
 }
 .home__web {
   font-size: 1.2rem;
@@ -271,12 +271,12 @@ a {
   flex-direction: column;
   width: 150px;
   height: 150px;
-  margin: 1.5rem 1.5rem;
+  margin: 1.5rem;
   align-items: center;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px, rgba(0, 0, 0, 0.07) 0 2px 4px,
+    rgba(0, 0, 0, 0.07) 0 4px 8px, rgba(0, 0, 0, 0.07) 0 8px 16px,
+    rgba(0, 0, 0, 0.07) 0 16px 32px, rgba(0, 0, 0, 0.07) 0 32px 64px;
 }
 .skills_circle {
   width: 80px;
@@ -443,7 +443,7 @@ a {
     justify-content: flex-start;
     min-height: 300px;
     width: 80vw;
-    margin: 0 0;
+    margin: 0;
   }
   .about__text {
     width: 400px;
@@ -453,7 +453,7 @@ a {
     flex-direction: column;
     width: 50%;
     left: 60%;
-    top: 0vh;
+    top: 0;
     margin-right: 2rem;
   }
   .about-experience {
@@ -524,7 +524,7 @@ a {
     flex-direction: column;
     width: 30%;
     left: 78%;
-    top: 0vh;
+    top: 0;
     margin-right: 2rem;
   }
   .about-experience {
@@ -548,7 +548,7 @@ a {
     justify-content: flex-start;
     min-height: 300px;
     width: 90vw;
-    margin: 0 0;
+    margin: 0;
   }
   .about__text {
     width: 90vw;
@@ -644,7 +644,7 @@ a {
     left: 15%;
   }
   .contact__container {
-    margin: 0rem 1rem;
+    margin: 0 1rem;
   }
   .contact__input {
     margin-bottom: 1.5rem;
@@ -710,7 +710,7 @@ a {
     width: 100vw;
   }
   .resume-download-responsive {
-    margin-left: 0rem;
+    margin-left: 0;
     margin-top: 1rem;
   }
   .skills {
@@ -721,7 +721,7 @@ a {
   }
   .home__title {
     font-size: 1.8rem;
-    margin: 0px;
+    margin: 0;
   }
   .home__web {
     font-size: 0.9rem;
