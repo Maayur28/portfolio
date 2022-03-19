@@ -364,7 +364,7 @@ a {
   border-radius: 0.5rem;
   border: 1.5px solid #0e2431;
   outline: none;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   /* background-color: #fdf2f6; */
 }
 .contact_button {
@@ -375,6 +375,7 @@ a {
   background-color: #eb0253;
   color: white;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 @media only screen and (max-width: 1000px) {
   .skills__container {

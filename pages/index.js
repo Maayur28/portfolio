@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import Analytics from "../googleAnalytics";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
 import Typed from "react-typed";
@@ -13,9 +13,12 @@ import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import "react-toastify/dist/ReactToastify.css";
 import { motion, useViewportScroll } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Home() {
   const { scrollYProgress } = useViewportScroll();
+  const recaptchaRef = React.createRef({});
+  const [captchaverified, setcaptchaverified] = useState(false);
   const darkMode = useDarkMode(false);
   const [burger, setburger] = useState(true);
   const screenWidth = useWindowDimensions();
@@ -26,6 +29,7 @@ export default function Home() {
   const [hover, sethover] = useState(false);
   const rout = useRouter();
   const [router, setrouter] = useState("");
+  const [submitting, setsubmitting] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("path", rout.asPath);
@@ -180,36 +184,76 @@ export default function Home() {
     document.documentElement.scrollTop = 0;
   }
   const sendEmail = async (e) => {
+    console.log("helo");
+    setsubmitting(true);
     const formData = new FormData(e.target);
     e.preventDefault();
-    let data = {};
+    let obj = {};
     for (let [key, value] of formData.entries()) {
-      data[key] = value;
+      obj[key] = value;
     }
-    const res = await fetch("/api/hello", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (res) {
-      document.getElementById("form").reset();
-      localStorage.getItem("darkMode") == "true"
-        ? toast("Message sent! Thank you for contacting", {
-            position: "bottom-center",
-            autoClose: 2500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            progress: undefined,
-          })
-        : toast.dark("Message sent! Thank you for contacting", {
+    const recaptchaValue = await recaptchaRef.current.getValue();
+    obj.captcha = recaptchaValue;
+    obj.name = obj.name + " --Portfolio";
+    if (
+      obj.email != null &&
+      obj.name != null &&
+      obj.message != null &&
+      recaptchaValue != null
+    ) {
+      fetch("https://trackdsaauth.herokuapp.com/contact", {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then(async (response) => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            const text = await response.text();
+            throw new Error(text);
+          }
+        })
+        .then((data) => {
+          setsubmitting(false);
+          if (data.success) {
+            localStorage.getItem("darkMode") == "true"
+              ? toast("Message sent! Thank you for contacting", {
+                  position: "bottom-center",
+                  autoClose: 2500,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  progress: undefined,
+                })
+              : toast.dark("Message sent! Thank you for contacting", {
+                  position: "bottom-center",
+                  autoClose: 2500,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  progress: undefined,
+                });
+            document.getElementById("form").reset();
+          } else {
+            toast.error("Re-verify captcha and try again", {
+              position: "bottom-center",
+              autoClose: 2500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch((err) => {
+          toast.error(err.message, {
             position: "bottom-center",
             autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             progress: undefined,
           });
+        });
     }
   };
   return (
@@ -830,7 +874,13 @@ export default function Home() {
                       placeholder="Your message here"
                       required={true}
                     ></textarea>
-                    <button className="contact_button">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey="6Lf5Hr0dAAAAALIuH2ZavQv0r9CVnmkJFYhNH2VE"
+                      onChange={() => setcaptchaverified(true)}
+                      onExpired={() => recaptchaRef.reset()}
+                    />
+                    <button className="contact_button" disabled={submitting}>
                       Send message <i className="bx bxs-send"></i>
                     </button>
                   </form>
