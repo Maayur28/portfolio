@@ -709,7 +709,7 @@ export default function Home() {
                     <div className="about-experience">
                       <CountUp
                         start={0}
-                        end={4}
+                        end={5}
                         prefix="0"
                         suffix="+"
                         duration="1"
