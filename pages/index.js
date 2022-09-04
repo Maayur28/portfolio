@@ -65,15 +65,9 @@ export default function Home() {
       in: "bounceInLeft",
       out: "bounceOutRight",
     },
-    {
-      skill: "Typescript",
-      value: "75",
-      in: "bounceInRight",
-      out: "bounceOutRight",
-    },
     { skill: "React", value: "85", in: "bounceInLeft", out: "bounceOutLeft" },
     {
-      skill: "Nextjs",
+      skill: "Spring Boot",
       value: "75",
       in: "bounceInRight",
       out: "bounceOutRight",
