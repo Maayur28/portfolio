@@ -651,7 +651,7 @@ export default function Home() {
               </div>
               <div className="blobImage">
                 <Image
-                  src="/imgblob.png"
+                  src="/magicpattern-blob-1667441403340.png"
                   alt="myImage"
                   width={imagewidth}
                   height={imageheight}
@@ -697,7 +697,13 @@ export default function Home() {
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
-                      <CountUp start={0} end={1} suffix="+" duration="1">
+                      <CountUp
+                        start={0}
+                        end={2}
+                        prefix="0"
+                        suffix="+"
+                        duration="2"
+                      >
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
