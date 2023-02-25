@@ -70,7 +70,7 @@ export default function Home() {
     { skill: "React", value: "85", in: "bounceInLeft", out: "bounceOutLeft" },
     {
       skill: "Spring Boot",
-      value: "75",
+      value: "80",
       in: "bounceInRight",
       out: "bounceOutRight",
     },
