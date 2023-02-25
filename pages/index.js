@@ -102,7 +102,7 @@ export default function Home() {
     {
       img: "/trackdsa.png",
       alt: "trackDSA",
-      link: "https://www.trackdsa.in/",
+      link: "https://trackdsa.vercel.app/",
       title: "Track DSA",
       desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInLeft",
@@ -113,7 +113,7 @@ export default function Home() {
     {
       img: "/work1.png",
       alt: "pricetrackerwebsiteImage",
-      link: "https://pricetracker.tech/",
+      link: "https://pricetracker28.vercel.app/",
       title: "Price Tracker",
       desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInRight",
