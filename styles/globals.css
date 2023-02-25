@@ -289,6 +289,10 @@ a {
   margin-top: 1rem;
 }
 /*Work*/
+.ant-card-hoverable:hover {
+  box-shadow: 0 1px 2px -2px #ce6b8d, 0 3px 6px 0 #ce6b8d,
+    0 5px 12px 4px #ce6b8d !important;
+}
 .work {
   display: flex;
   flex-direction: column;
@@ -298,11 +302,14 @@ a {
 }
 .work__container {
   display: flex;
-  width: 100vw;
+  width: 80vw;
   flex-wrap: wrap;
   min-height: 70vh;
   justify-content: center;
   align-items: center;
+}
+.work__container_card {
+  width: 440px !important;
 }
 .work__img {
   position: relative;
@@ -319,12 +326,6 @@ a {
   bottom: 5vh;
   right: 10vw;
   z-index: 100;
-}
-.work__img:hover .workImage {
-  filter: blur(7px);
-}
-.work__img:hover .work_button-div {
-  opacity: 1;
 }
 .work_button {
   padding: 10px 25px;
@@ -381,6 +382,9 @@ a {
   .skills__container {
     width: 90vw;
   }
+  .work__container_card {
+    width: 350px !important;
+  }
 }
 @media only screen and (max-width: 850px) {
   .resume-download {
@@ -397,6 +401,9 @@ a {
     justify-content: center;
     align-items: center;
     margin-bottom: 10vh;
+  }
+  .work__container_card {
+    width: 300px !important;
   }
   .navitem {
     margin: 1rem 2.5rem;
@@ -531,6 +538,9 @@ a {
   .about-experience {
     margin-bottom: 2rem;
   }
+  .work__container_card {
+    width: 250px !important;
+  }
 }
 @media only screen and (max-width: 620px) {
   .work__img {
@@ -574,6 +584,9 @@ a {
     border-radius: 5px;
     color: white;
   }
+  .work__container_card {
+    width: 250px !important;
+  }
 }
 
 @media only screen and (max-width: 525px) {
@@ -599,6 +612,9 @@ a {
   .work_button-div {
     top: 30%;
     left: 20%;
+  }
+  .work__container_card {
+    width: 250px !important;
   }
 }
 @media only screen and (max-width: 450px) {
@@ -655,6 +671,9 @@ a {
     padding: 0.7rem 1.5rem;
     font-size: 0.8rem;
   }
+  .work__container_card {
+    width: 250px !important;
+  }
   /* .navmenu-responsive{
     justify-content: center
   } */
@@ -690,6 +709,9 @@ a {
     font-size: 0.7rem;
     top: 30%;
     left: 15%;
+  }
+  .work__container_card {
+    width: 250px !important;
   }
 }
 @media only screen and (max-width: 324px) {
@@ -736,6 +758,9 @@ a {
     top: 30%;
     left: 15%;
   }
+  .work__container_card {
+    width: 200px !important;
+  }
 }
 @media only screen and (max-width: 300px) {
   .skills {
@@ -745,5 +770,8 @@ a {
     font-size: 0.7rem;
     top: 30%;
     left: 10%;
+  }
+  .work__container_card {
+    width: 200px !important;
   }
 }

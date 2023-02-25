@@ -14,6 +14,8 @@ import VisibilitySensor from "react-visibility-sensor";
 import "react-toastify/dist/ReactToastify.css";
 import { motion, useViewportScroll } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Card } from "antd";
+const { Meta } = Card;
 
 export default function Home() {
   const { scrollYProgress } = useViewportScroll();
@@ -260,6 +262,10 @@ export default function Home() {
           });
         });
     }
+  };
+
+  const workProfilesCalled = (url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
   };
   return (
     <>
@@ -809,42 +815,22 @@ export default function Home() {
                       className="work__img"
                       key={index}
                     >
-                      <Image
-                        className="workImage"
-                        src={val.img}
-                        alt={val.alt}
-                        width={450}
-                        height={250}
-                      />
-                      <div className="work_button-div">
-                        <div
-                          style={{
-                            color: val.titlecolor,
-                            marginBottom: "2rem",
-                            fontWeight: "bolder",
-                            fontSize: "16px",
-                          }}
-                        >
-                          {val.title}
-                        </div>
-                        <span
-                          style={{
-                            color: val.color,
-                            marginBottom: "1rem",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          {val.desc}
-                        </span>
-                        <a
-                          href={val.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="work_button"
-                        >
-                          View Project
-                        </a>
-                      </div>
+                      <Card
+                        hoverable
+                        className="work__container_card"
+                        onClick={() => workProfilesCalled(val.link)}
+                        cover={
+                          <Image
+                            className="workImage"
+                            src={val.img}
+                            alt={val.alt}
+                            width={450}
+                            height={250}
+                          />
+                        }
+                      >
+                        <Meta title={val.title} description={val.desc} />
+                      </Card>
                     </motion.div>
                   ))}
                 </div>
