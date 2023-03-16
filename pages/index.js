@@ -208,7 +208,7 @@ export default function Home() {
       obj.message != null &&
       recaptchaValue != null
     ) {
-      fetch("https://trackdsauser.azurewebsites.net/contact", {
+      fetch("https://jellyfish-app-gvj7z.ondigitalocean.app/contact", {
         method: "POST",
         body: JSON.stringify(obj),
         headers: {
