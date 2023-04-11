@@ -91,6 +91,17 @@ export default function Home() {
   ];
   const workData = [
     {
+      img: "/PriceTracker.png",
+      alt: "pricetrackerwebsiteImage",
+      link: "https://www.trackprice.co.in/",
+      title: "Price Tracker",
+      desc: "React.js, Node.js, Express.js, Mongodb",
+      in: "bounceInRight",
+      out: "bounceOutLeft",
+      color: "black",
+      titlecolor: "#eb0253",
+    },
+    {
       img: "/shofferstop.png",
       alt: "ShofferStop",
       link: "https://www.shofferstop.com/",
@@ -110,28 +121,6 @@ export default function Home() {
       in: "bounceInLeft",
       out: "bounceOutRight",
       color: "black",
-      titlecolor: "#eb0253",
-    },
-    {
-      img: "/work1.png",
-      alt: "pricetrackerwebsiteImage",
-      link: "https://pricetracker28.vercel.app/",
-      title: "Price Tracker",
-      desc: "React.js, Node.js, Express.js, Mongodb",
-      in: "bounceInRight",
-      out: "bounceOutLeft",
-      color: "white",
-      titlecolor: "#eb0253",
-    },
-    {
-      img: "/work2.png",
-      alt: "shoewebsiteImage",
-      link: "https://shoes28.vercel.app/",
-      title: "Ecommerce Shoe",
-      desc: "React.js, Node.js, Express.js, Mongodb",
-      in: "bounceInLeft",
-      out: "bounceOutRight",
-      color: "white",
       titlecolor: "#eb0253",
     },
     {
