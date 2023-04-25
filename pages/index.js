@@ -190,14 +190,13 @@ export default function Home() {
     }
     const recaptchaValue = await recaptchaRef.current.getValue();
     obj.captcha = recaptchaValue;
-    obj.name = obj.name + " --Portfolio";
     if (
       obj.email != null &&
       obj.name != null &&
       obj.message != null &&
       recaptchaValue != null
     ) {
-      fetch("https://jellyfish-app-gvj7z.ondigitalocean.app/contact", {
+      fetch("https://portfolio-backend-mayur28.vercel.app/contact", {
         method: "POST",
         body: JSON.stringify(obj),
         headers: {
