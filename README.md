@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-    <img src="https://res.cloudinary.com/mayur28/image/upload/v1626413647/favi_kmljsf.png" alt="Logo" width="80" height="80">
+    <img src="https://res.cloudinary.com/mayur28/image/upload/v1682520415/m-high-resolution-color-logo_rjbg1g.png" alt="Logo" width="80" height="80">
   <h3 align="center">Mayur Agarwal Portfolio</h3>
 
   <p align="center">
