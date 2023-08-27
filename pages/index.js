@@ -639,7 +639,7 @@ export default function Home() {
               </div>
               <div className="blobImage">
                 <Image
-                  src="/magicpattern-blob-1667441403340.png"
+                  src="/magicpattern-blob-1693127238171.png"
                   alt="myImage"
                   width={imagewidth}
                   height={imageheight}
