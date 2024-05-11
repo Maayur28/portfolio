@@ -185,7 +185,7 @@ export default function Home() {
       obj.message != null &&
       recaptchaValue != null
     ) {
-      fetch("https://portfolio-backend-mayur28.vercel.app/contact", {
+      fetch("https://orchestration.mayuragarwal.in/contact", {
         method: "POST",
         body: JSON.stringify(obj),
         headers: {
