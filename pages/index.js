@@ -546,7 +546,7 @@ export default function Home() {
                   ></i>
                 </a>
                 <a
-                  href="https://stackoverflow.com/story/mayur_28"
+                  href="https://stackoverflow.com/users/14791240/mayur-28"
                   target="_blank"
                   rel="noreferrer"
                   className="stackoverflow"
