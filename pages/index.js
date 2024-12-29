@@ -12,13 +12,12 @@ import { ToastContainer, toast } from "react-toastify";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import "react-toastify/dist/ReactToastify.css";
-import { motion, useViewportScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 import { Card } from "antd";
 const { Meta } = Card;
 
 export default function Home() {
-  const { scrollYProgress } = useViewportScroll();
   const recaptchaRef = React.createRef({});
   const [captchaverified, setcaptchaverified] = useState(false);
   const darkMode = useDarkMode(false);
@@ -32,6 +31,7 @@ export default function Home() {
   const rout = useRouter();
   const [router, setrouter] = useState("");
   const [submitting, setsubmitting] = useState(false);
+  const [yearsAgo, setYearsAgo] = useState(9);
 
   useEffect(() => {
     localStorage.setItem("path", rout.asPath);
@@ -42,6 +42,8 @@ export default function Home() {
     setMounted(true);
     setrouter(localStorage.getItem("path"));
     rout.push(localStorage.getItem("path"));
+    setYearsAgo(new Date().getFullYear() - 2016);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (typeof window != "undefined") {
     window.onscroll = function () {
@@ -70,17 +72,11 @@ export default function Home() {
     { skill: "React", value: "85", in: "bounceInLeft", out: "bounceOutLeft" },
     {
       skill: "Spring Boot",
-      value: "80",
-      in: "bounceInRight",
-      out: "bounceOutRight",
-    },
-    { skill: "Nodejs", value: "80", in: "bounceInLeft", out: "bounceOutLeft" },
-    {
-      skill: "Expressjs",
       value: "85",
       in: "bounceInRight",
       out: "bounceOutRight",
     },
+    { skill: "AWS", value: "75", in: "bounceInLeft", out: "bounceOutLeft" },
     {
       skill: "Mongodb",
       value: "90",
@@ -88,6 +84,12 @@ export default function Home() {
       out: "bounceOutLeft",
     },
     { skill: "MySql", value: "85", in: "bounceInRight", out: "bounceOutRight" },
+    {
+      skill: "RabbitMQ",
+      value: "85",
+      in: "bounceInRight",
+      out: "bounceOutRight",
+    },
   ];
   const workData = [
     {
@@ -582,12 +584,14 @@ export default function Home() {
                   />
                 </div>
                 <span>
-                  I am a software engineer who specializes in developing
-                  solutions that leverage best-practice technologies to deliver
-                  a top user experience. I also occasionally develop APIs and
-                  small websites that I&apos;ve been curious about, also I used
-                  to develop small games though the frequency has been decreased
-                  lately.
+                  I am a Senior Software Engineer focused on developing
+                  scalable, efficient solutions that provide exceptional user
+                  experiences. My approach combines problem-solving, innovation,
+                  and continuous learning to create high-performance software. I
+                  am committed to delivering impactful solutions that drive
+                  business success and exceed user expectations. Passionate
+                  about staying at the forefront of industry trends, I thrive in
+                  dynamic environments.
                 </span>
                 <div className="home_button">
                   <div className="contact-div">
@@ -662,21 +666,35 @@ export default function Home() {
                 />
                 <div className="about__text-div">
                   <p className="about__text">
-                    I started my coding journey almost five years ago and now
-                    I&apos;m working as a Power Programmer at Infosys. From my
-                    portfolio, you may have noticed that I&apos;m obsessed with
-                    unique, custom design and user-friendly functionality so hit
-                    me up with your weird project ideas or website proposals. I
-                    build very small (but cute, I think!) side projects that are
-                    either an attempt at art or are a thing that I need in my
-                    life. I feel really lucky that I get paid to do one of my
-                    biggest hobbies.
+                    <p>
+                      I started my coding journey {yearsAgo} years ago, currently working with the
+                      Amazon GiftCards team through Pinelabs, contributing to
+                      strategic initiatives that drive business value. With
+                      expertise in Spring Boot and AWS, I specialize in
+                      designing and implementing scalable, high-performance
+                      solutions. In addition to my professional work, I am
+                      passionate about exploring new technologies and developing
+                      innovative solutions through side projects. In 2022, I was
+                      honored with the Best Performer Award for my
+                      contributions. I am always eager to learn, grow, and
+                      collaborate on impactful projects.
+                    </p>
+
+                    <p>
+                      I have built projects that are used by real-world users in
+                      their daily lives, focusing on creating solutions that are
+                      both functional and user-friendly. These projects allow me
+                      to experiment with new ideas and technologies while
+                      solving practical problems. I enjoy working on projects
+                      that push my creativity, and I thrive when collaborating
+                      with others to develop solutions that make a difference.
+                    </p>
                   </p>
                   <div className="about-number">
                     <div className="about-experience">
                       <CountUp
                         start={0}
-                        end={2}
+                        end={4}
                         prefix="0"
                         suffix="+"
                         duration="2"
@@ -692,10 +710,10 @@ export default function Home() {
                     <div className="about-experience">
                       <CountUp
                         start={0}
-                        end={5}
+                        end={8}
                         prefix="0"
                         suffix="+"
-                        duration="1"
+                        duration="4"
                       >
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
@@ -706,7 +724,7 @@ export default function Home() {
                       <span className="about-desc">Completed projects</span>
                     </div>
                     <div className="about-experience">
-                      <CountUp start={0} end={1} prefix="0" duration="1">
+                      <CountUp start={0} end={2} prefix="0" duration="1">
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
