@@ -393,7 +393,7 @@ export default function Home() {
           }
         >
           <div className="navbar-logo">
-            <a onClick={() => rout.push("/")} className="nav__logo">
+            <a href="" className="nav__logo">
               MAYUR
             </a>
           </div>
@@ -409,25 +409,25 @@ export default function Home() {
           >
             <li className={router == "/#home" ? "navitem active" : "navitem"}>
               <i className="bx bxs-home"></i>
-              <a onClick={() => rout.push("/#home")} className="navlink">
+              <a href="#home" className="navlink">
                 Home
               </a>
             </li>
             <li className={router == "/#about" ? "navitem active" : "navitem"}>
               <i className="bx bxs-user"></i>
-              <a onClick={() => rout.push("#about")} className="navlink">
+              <a href="#about" className="navlink">
                 About
               </a>
             </li>
             <li className={router == "/#skills" ? "navitem active" : "navitem"}>
               <i className="bx bxs-notepad"></i>
-              <a onClick={() => rout.push("#skills")} className="navlink">
+              <a href="#skills" className="navlink">
                 Skills
               </a>
             </li>
             <li className={router == "/#work" ? "navitem active" : "navitem"}>
               <i className="bx bxs-terminal"></i>
-              <a onClick={() => rout.push("#work")} className="navlink">
+              <a href="#work" className="navlink">
                 Work
               </a>
             </li>
@@ -435,7 +435,7 @@ export default function Home() {
               className={router == "/#contact" ? "navitem active" : "navitem"}
             >
               <i className="bx bxs-contact"></i>
-              <a onClick={() => rout.push("#contact")} className="navlink">
+              <a href="#contact" className="navlink">
                 Contact
               </a>
             </li>
@@ -596,7 +596,7 @@ export default function Home() {
                 <div className="home_button">
                   <div className="contact-div">
                     <a
-                      onClick={() => rout.push("/#contact")}
+                      href="#contact"
                       className="contact-button"
                     >
                       Contact Me <i className="bx bxs-send"></i>
