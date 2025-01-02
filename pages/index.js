@@ -106,7 +106,7 @@ export default function Home() {
     {
       img: "/trackdsa.png",
       alt: "TrackDSA",
-      link: "https://www.trackdsa.com/",
+      link: "https://www.trackdsa.in/",
       title: "Track DSA",
       desc: "React.js, Node.js, Express.js, Mongodb",
       in: "bounceInLeft",
