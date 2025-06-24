@@ -456,7 +456,7 @@ export default function Home() {
                   <>
                     <i className="bx bx-download"></i>
                     <a
-                      href="https://asset.cloudinary.com/mayur28/ee678d8ae5baa2b29e5de0db18cd31f6"
+                      href="https://mayur28-resume.s3.ap-south-1.amazonaws.com/MayurAgarwal_Resume.pdf"
                       download
                       className="navlink"
                     >
