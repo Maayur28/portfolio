@@ -229,6 +229,8 @@ export default function Home() {
               progress: undefined,
             });
           }
+          recaptchaRef.current.reset();
+          setcaptchaverified(false);
         })
         .catch((err) => {
           toast.error(err.message, {

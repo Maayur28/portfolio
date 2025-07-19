@@ -33,15 +33,20 @@ export default async function handler(req, res) {
     });
   }
 
+  console.log("Captcha verified successfully");
+
   if (!email || !name || !message) {
     return res.status(400).json({ message: "Missing required fields" });
   }
+
+  console.log("Input validation passed");
 
   // Respond to the client immediately
   res.status(200).json({ success: true });
 
   // Process email sending asynchronously
   (async () => {
+    console.log("Starting email sending process");
     try {
       const mailTransport = nodemailer.createTransport({
         host: "smtpout.secureserver.net",
@@ -417,6 +422,7 @@ export default async function handler(req, res) {
       };
 
       await new Promise((resolve, reject) => {
+        console.log("Sending email to user...");
         mailTransport.sendMail(mailData, function (err, info) {
           if (err) {
             console.log(err);
@@ -429,6 +435,7 @@ export default async function handler(req, res) {
       });
 
       await new Promise((resolve, reject) => {
+        console.log("Sending email to admin...");
         mailTransport.sendMail(usMailData, function (err, info) {
           if (err) {
             console.log(err);
