@@ -41,34 +41,30 @@ export default async function handler(req, res) {
 
   console.log("Input validation passed");
 
-  // Respond to the client immediately
-  res.status(200).json({ success: true });
-
   // Process email sending asynchronously
-  (async () => {
-    console.log("Starting email sending process");
-    try {
-      const mailTransport = nodemailer.createTransport({
-        host: "smtpout.secureserver.net",
-        secure: true,
-        secureConnection: false, // TLS requires secureConnection to be false
-        tls: {
-          ciphers: "SSLv3",
-        },
-        requireTLS: true,
-        port: 465,
-        debug: true,
-        auth: {
-          user: process.env.email,
-          pass: process.env.password,
-        },
-      });
+  console.log("Starting email sending process");
+  try {
+    const mailTransport = nodemailer.createTransport({
+      host: "smtpout.secureserver.net",
+      secure: true,
+      secureConnection: false, // TLS requires secureConnection to be false
+      tls: {
+        ciphers: "SSLv3",
+      },
+      requireTLS: true,
+      port: 465,
+      debug: true,
+      auth: {
+        user: process.env.email,
+        pass: process.env.password,
+      },
+    });
 
-      const mailData = {
-        from: process.env.email,
-        to: email,
-        subject: "Thank you for contacting us !!!🙂",
-        html: `<!DOCTYPE html>
+    const mailData = {
+      from: process.env.email,
+      to: email,
+      subject: "Thank you for contacting us !!!🙂",
+      html: `<!DOCTYPE html>
       <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
       <head>
           <title></title>
@@ -367,13 +363,13 @@ export default async function handler(req, res) {
           </table>
       </body>
       </html>`,
-      };
+    };
 
-      const usMailData = {
-        from: process.env.email,
-        to: process.env.MY_EMAIL,
-        subject: "Recieved Contact Mail🙂",
-        html: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    const usMailData = {
+      from: process.env.email,
+      to: process.env.MY_EMAIL,
+      subject: "Recieved Contact Mail🙂",
+      html: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
       <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -419,36 +415,19 @@ export default async function handler(req, res) {
         </table>
       </body>
       </html>`,
-      };
+    };
 
-      await new Promise((resolve, reject) => {
-        console.log("Sending email to user...");
-        mailTransport.sendMail(mailData, function (err, info) {
-          if (err) {
-            console.log(err);
-            reject(err);
-          } else {
-            console.log("success contact mail");
-            resolve(info);
-          }
-        });
-      });
+    await Promise.all([
+      mailTransport.sendMail(mailData),
+      mailTransport.sendMail(usMailData),
+    ]);
 
-      await new Promise((resolve, reject) => {
-        console.log("Sending email to admin...");
-        mailTransport.sendMail(usMailData, function (err, info) {
-          if (err) {
-            console.log(err);
-            reject(err);
-          } else {
-            console.log("success us-contact mail");
-            resolve(info);
-          }
-        });
-      });
-      console.log("Email sent successfully");
-    } catch (error) {
-      console.error(error);
-    }
-  })();
+    console.log("Both emails sent successfully");
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.error("Error sending emails:", error);
+    return res.status(400).json({
+      message: "Sorry, we couldn't send your message. Please try again later.",
+    });
+  }
 }

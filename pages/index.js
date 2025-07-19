@@ -229,8 +229,6 @@ export default function Home() {
               progress: undefined,
             });
           }
-          recaptchaRef.current.reset();
-          setcaptchaverified(false);
         })
         .catch((err) => {
           toast.error(err.message, {
@@ -865,7 +863,18 @@ export default function Home() {
                       onExpired={() => recaptchaRef.reset()}
                     />
                     <button className="contact_button" disabled={submitting}>
-                      Send message <i className="bx bxs-send"></i>
+                      {submitting ? (
+                        <>
+                          <span className="spinner" style={{ marginRight: 8 }}>
+                            <i className="bx bx-loader bx-spin"></i>
+                          </span>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send message <i className="bx bxs-send"></i>
+                        </>
+                      )}
                     </button>
                   </form>
                 </div>
