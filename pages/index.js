@@ -43,7 +43,7 @@ export default function Home() {
     setrouter(localStorage.getItem("path"));
     rout.push(localStorage.getItem("path"));
     setYearsAgo(new Date().getFullYear() - 2016);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (typeof window != "undefined") {
     window.onscroll = function () {
@@ -171,7 +171,6 @@ export default function Home() {
     document.documentElement.scrollTop = 0;
   }
   const sendEmail = async (e) => {
-    console.log("helo");
     setsubmitting(true);
     const formData = new FormData(e.target);
     e.preventDefault();
@@ -187,7 +186,7 @@ export default function Home() {
       obj.message != null &&
       recaptchaValue != null
     ) {
-      fetch("https://orchestration.mayuragarwal.in/contact", {
+      fetch("/api/send-email", {
         method: "POST",
         body: JSON.stringify(obj),
         headers: {
@@ -595,10 +594,7 @@ export default function Home() {
                 </span>
                 <div className="home_button">
                   <div className="contact-div">
-                    <a
-                      href="#contact"
-                      className="contact-button"
-                    >
+                    <a href="#contact" className="contact-button">
                       Contact Me <i className="bx bxs-send"></i>
                     </a>
                   </div>
@@ -667,15 +663,15 @@ export default function Home() {
                 <div className="about__text-div">
                   <p className="about__text">
                     <p>
-                      I started my coding journey {yearsAgo} years ago, currently working with the
-                      Amazon GiftCards team through Pinelabs, contributing to
-                      strategic initiatives that drive business value. With
-                      expertise in Spring Boot and AWS, I specialize in
-                      designing and implementing scalable, high-performance
-                      solutions. In addition to my professional work, I am
-                      passionate about exploring new technologies and developing
-                      innovative solutions through side projects. In 2022, I was
-                      honored with the Best Performer Award for my
+                      I started my coding journey {yearsAgo} years ago,
+                      currently working with the Amazon GiftCards team through
+                      Pinelabs, contributing to strategic initiatives that drive
+                      business value. With expertise in Spring Boot and AWS, I
+                      specialize in designing and implementing scalable,
+                      high-performance solutions. In addition to my professional
+                      work, I am passionate about exploring new technologies and
+                      developing innovative solutions through side projects. In
+                      2022, I was honored with the Best Performer Award for my
                       contributions. I am always eager to learn, grow, and
                       collaborate on impactful projects.
                     </p>
