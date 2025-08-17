@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import Analytics from "../googleAnalytics";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
 import Typed from "react-typed";
@@ -18,7 +18,7 @@ import { Card } from "antd";
 const { Meta } = Card;
 
 export default function Home() {
-  const recaptchaRef = React.createRef({});
+  const recaptchaRef = useRef(null);
   const [captchaverified, setcaptchaverified] = useState(false);
   const darkMode = useDarkMode(false);
   const [burger, setburger] = useState(true);
@@ -32,34 +32,56 @@ export default function Home() {
   const [router, setrouter] = useState("");
   const [submitting, setsubmitting] = useState(false);
   const [yearsAgo, setYearsAgo] = useState(9);
+  const [randomLogo, setRandomLogo] = useState(null);
 
   useEffect(() => {
+    // keep last path for your nav highlight logic
     localStorage.setItem("path", rout.asPath);
     setrouter(rout.asPath);
   }, [rout]);
 
   useEffect(() => {
     setMounted(true);
-    setrouter(localStorage.getItem("path"));
-    rout.push(localStorage.getItem("path"));
+
+    const stored = localStorage.getItem("path") || "";
+    setrouter(stored);
+    if (stored) {
+      // only push if we actually have a stored path
+      rout.push(stored);
+    }
+
     setYearsAgo(new Date().getFullYear() - 2016);
+
+    // pick a random logo on client
+    const logos = [
+      "/m-logo-animated0.svg",
+      "/m-logo-animated1.svg",
+      "/m-logo-animated2.svg",
+      "/m-logo-animated3.svg",
+    ];
+    let randomIndex = Math.floor(Math.random() * logos.length);
+    console.log("Random: ", randomIndex);
+    setRandomLogo(logos[randomIndex]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (typeof window != "undefined") {
-    window.onscroll = function () {
-      scrollFun();
+
+  // Scroll listener (with cleanup)
+  useEffect(() => {
+    const onScroll = () => {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        setshowup(true);
+      } else {
+        setshowup(false);
+      }
     };
-  }
-  function scrollFun() {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      setshowup(true);
-    } else {
-      setshowup(false);
-    }
-  }
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const skillsData = [
     { skill: "HTML", value: "85", in: "bounceInLeft", out: "bounceOutLeft" },
     { skill: "CSS", value: "70", in: "bounceInRight", out: "bounceOutRight" },
@@ -91,6 +113,7 @@ export default function Home() {
       out: "bounceOutRight",
     },
   ];
+
   const workData = [
     {
       img: "/trackmyprice_preview.png",
@@ -126,31 +149,9 @@ export default function Home() {
       titlecolor: "#eb0253",
     },
   ];
-  function getWindowDimensions() {
-    if (typeof window != "undefined") {
-      const { innerWidth: width, innerHeight: height } = window;
-      return {
-        width,
-      };
-    }
-  }
-  function useWindowDimensions() {
-    const [windowDimensions, setWindowDimensions] = useState(
-      getWindowDimensions()
-    );
 
-    useEffect(() => {
-      function handleResize() {
-        setWindowDimensions(getWindowDimensions());
-      }
-
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    return windowDimensions;
-  }
   useEffect(() => {
+    if (!screenWidth?.width) return;
     if (screenWidth.width <= 850 && screenWidth.width > 724) {
       setimagewidth(400);
       setimageheight(400);
@@ -164,22 +165,26 @@ export default function Home() {
       setimageheight(400);
     }
     if (screenWidth.width > 850) setburger(true);
-    // else setburger(false);
   }, [screenWidth]);
+
   function scrollTopFun() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
+
   const sendEmail = async (e) => {
     setsubmitting(true);
-    const formData = new FormData(e.target);
     e.preventDefault();
-    let obj = {};
+
+    const formData = new FormData(e.currentTarget);
+    const obj = {};
     for (let [key, value] of formData.entries()) {
       obj[key] = value;
     }
-    const recaptchaValue = await recaptchaRef.current.getValue();
+
+    const recaptchaValue = recaptchaRef.current?.getValue();
     obj.captcha = recaptchaValue;
+
     if (
       obj.email != null &&
       obj.name != null &&
@@ -219,7 +224,8 @@ export default function Home() {
                   closeOnClick: true,
                   progress: undefined,
                 });
-            document.getElementById("form").reset();
+            document.getElementById("form")?.reset();
+            recaptchaRef.current?.reset();
           } else {
             toast.error("Re-verify captcha and try again", {
               position: "bottom-center",
@@ -231,6 +237,7 @@ export default function Home() {
           }
         })
         .catch((err) => {
+          setsubmitting(false);
           toast.error(err.message, {
             position: "bottom-center",
             autoClose: 2500,
@@ -239,12 +246,19 @@ export default function Home() {
             progress: undefined,
           });
         });
+    } else {
+      setsubmitting(false);
+      toast.error("Please complete the captcha.", {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
     }
   };
 
   const workProfilesCalled = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
+
   return (
     <>
       <Analytics />
@@ -252,7 +266,6 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
-        <title>Mayur Agarwal Web Developer-Portfolio</title>
         <title>
           {router.length > 1
             ? router.charAt(2).toUpperCase() + router.slice(3)
@@ -260,34 +273,29 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="I(Mayur Agarwal) am a software engineer who specializes in building
-        user-friendly websites/webapps to provide exceptional web experience."
+          content="I(Mayur Agarwal) am a software engineer who specializes in building user-friendly websites/webapps to provide exceptional web experience."
         />
         <meta
           name="og:description"
-          content="I(Mayur Agarwal) am a software engineer who specializes in building
-        user-friendly websites/webapps and provide exceptional web experience."
+          content="I(Mayur Agarwal) am a software engineer who specializes in building user-friendly websites/webapps and provide exceptional web experience."
         />
-        <meta property="og:site_name" content="Mayur Agarwal"></meta>
-        <meta property="og:url" content="https://mayuragarwal.in/"></meta>
-        <meta property="og:title" content="Home – Default"></meta>
-        <meta property="og:type" content="Portfolio"></meta>
-        <meta name="robots" content="index, follow"></meta>
+        <meta property="og:site_name" content="Mayur Agarwal" />
+        <meta property="og:url" content="https://mayuragarwal.in/" />
+        <meta property="og:title" content="Home – Default" />
+        <meta property="og:type" content="Portfolio" />
+        <meta name="robots" content="index, follow" />
         <meta
           property="og:image"
           content="https://res.cloudinary.com/mayur28/image/upload/v1626356532/about2_k9zsdg.png"
-        ></meta>
-
+        />
         <meta property="og:locale" content="en_US" />
-        {/* <link rel="canonical" href="https://mattfarley.ca"> */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@mayuragarwal" />
         <meta name="twitter:creator" content="@mayuragarwal" />
         <meta name="twitter:title" content="Mayur Agarwal" />
         <meta
           name="twitter:description"
-          content="I(Mayur Agarwal) am a software engineer who specializes in building
-        user-friendly websites/webapps and provide exceptional web experience."
+          content="I(Mayur Agarwal) am a software engineer who specializes in building user-friendly websites/webapps and provide exceptional web experience."
         />
         <meta
           name="twitter:image"
@@ -304,7 +312,6 @@ export default function Home() {
           property="og:see_also"
         />
         <meta content="https://twitter.com/mayur__28" property="og:see_also" />
-
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link
@@ -366,23 +373,18 @@ export default function Home() {
         <link
           href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
           rel="stylesheet"
-        ></link>
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
           disabled
-        ></link>
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
         />
         <script
           async
           src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"
         ></script>
       </Head>
+
       <header className={styles.main}>
         <nav
           className={
@@ -438,6 +440,7 @@ export default function Home() {
                 Contact
               </a>
             </li>
+
             {burger && (
               <li
                 className="navitem resume-download"
@@ -465,6 +468,7 @@ export default function Home() {
                 )}
               </li>
             )}
+
             {burger && (
               <li
                 onClick={() => darkMode.toggle()}
@@ -478,7 +482,8 @@ export default function Home() {
               </li>
             )}
           </ul>
-          {mounted && screenWidth.width <= 850 && (
+
+          {mounted && screenWidth?.width && screenWidth.width <= 850 && (
             <div
               onClick={() => darkMode.toggle()}
               style={{ cursor: "pointer" }}
@@ -490,10 +495,11 @@ export default function Home() {
               )}
             </div>
           )}
+
           <div
             className="navtoggle"
             id="nav-toggle"
-            onClick={() => setburger((prevState) => !prevState)}
+            onClick={() => setburger((prev) => !prev)}
           >
             {burger ? (
               <i className="burger-icon bx bx-slider"></i>
@@ -503,6 +509,7 @@ export default function Home() {
           </div>
         </nav>
       </header>
+
       <main>
         {mounted && (
           <>
@@ -569,10 +576,12 @@ export default function Home() {
                   ></i>
                 </a>
               </div>
+
               <div className="home__data">
                 <h1 className="home__title">
                   Hi, I&apos;m <span className="home__title-color">Mayur</span>
                 </h1>
+
                 <div className="home__web">
                   <Typed
                     strings={["Web Developer", "Competitive Coder"]}
@@ -582,6 +591,7 @@ export default function Home() {
                     backDelay={2000}
                   />
                 </div>
+
                 <span>
                   I am a Senior Software Engineer focused on developing
                   scalable, efficient solutions that provide exceptional user
@@ -592,40 +602,45 @@ export default function Home() {
                   about staying at the forefront of industry trends, I thrive in
                   dynamic environments.
                 </span>
+
                 <div className="home_button">
                   <div className="contact-div">
                     <a href="#contact" className="contact-button">
                       Contact Me <i className="bx bxs-send"></i>
                     </a>
                   </div>
-                  {mounted && screenWidth.width <= 850 && (
-                    <div
-                      className="resume-download-responsive"
-                      onMouseOver={() => sethover(true)}
-                      onMouseLeave={() => sethover(false)}
-                    >
-                      {!hover ? (
-                        <>
-                          <i className="bx bxs-book-open"></i>
-                          <span
-                            style={{ cursor: "pointer" }}
-                            className="navlink"
-                          >
-                            Resume
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <i className="bx bx-download"></i>
-                          <a href="/Resume.pdf" download className="navlink">
-                            Download
-                          </a>
-                        </>
-                      )}
-                    </div>
-                  )}
+
+                  {mounted &&
+                    screenWidth?.width &&
+                    screenWidth.width <= 850 && (
+                      <div
+                        className="resume-download-responsive"
+                        onMouseOver={() => sethover(true)}
+                        onMouseLeave={() => sethover(false)}
+                      >
+                        {!hover ? (
+                          <>
+                            <i className="bx bxs-book-open"></i>
+                            <span
+                              style={{ cursor: "pointer" }}
+                              className="navlink"
+                            >
+                              Resume
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <i className="bx bx-download"></i>
+                            <a href="/Resume.pdf" download className="navlink">
+                              Download
+                            </a>
+                          </>
+                        )}
+                      </div>
+                    )}
                 </div>
               </div>
+
               <div className="blobImage">
                 <Image
                   src="/my-image.png"
@@ -635,31 +650,41 @@ export default function Home() {
                   className="homeImage"
                 />
               </div>
-              {typeof screenWidth != "undefined" && screenWidth.width > 850 && (
-                <div className="scrollDown-div">
-                  <div className="scrollDown">
-                    <i className="bx bxs-mouse"></i>
-                    <span>Scroll down </span>
-                    <i className="bx bx-down-arrow-alt"></i>
-                  </div>
-                  {showup && (
-                    <div className="scrollup-div" onClick={scrollTopFun}>
-                      <i className="bx bxs-up-arrow-square"></i>
+
+              {typeof screenWidth != "undefined" &&
+                screenWidth?.width &&
+                screenWidth.width > 850 && (
+                  <div className="scrollDown-div">
+                    <div className="scrollDown">
+                      <i className="bx bxs-mouse"></i>
+                      <span>Scroll down </span>
+                      <i className="bx bx-down-arrow-alt"></i>
                     </div>
-                  )}
-                </div>
-              )}
+                    {showup && (
+                      <div className="scrollup-div" onClick={scrollTopFun}>
+                        <i className="bx bxs-up-arrow-square"></i>
+                      </div>
+                    )}
+                  </div>
+                )}
             </section>
+
             <section className="about" id="about">
               <h2 className="section-title">About Me</h2>
               <div className="about__container">
-                <Image
-                  src="/m-logo-animated.svg"
-                  alt="myPicture"
-                  width={350}
-                  height={350}
-                  className="aboutImage"
-                />
+                {randomLogo ? (
+                  <Image
+                    src={randomLogo}
+                    alt="My Logo"
+                    width={350}
+                    height={350}
+                    className="aboutImage"
+                    priority
+                  />
+                ) : (
+                  <div style={{ width: 350, height: 350 }} />
+                )}
+
                 <div className="about__text-div">
                   <p className="about__text">
                     <p>
@@ -686,6 +711,7 @@ export default function Home() {
                       with others to develop solutions that make a difference.
                     </p>
                   </p>
+
                   <div className="about-number">
                     <div className="about-experience">
                       <CountUp
@@ -693,7 +719,7 @@ export default function Home() {
                         end={4}
                         prefix="0"
                         suffix="+"
-                        duration="2"
+                        duration={2}
                       >
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
@@ -703,13 +729,14 @@ export default function Home() {
                       </CountUp>
                       <span className="about-desc">Years experience</span>
                     </div>
+
                     <div className="about-experience">
                       <CountUp
                         start={0}
                         end={8}
                         prefix="0"
                         suffix="+"
-                        duration="4"
+                        duration={4}
                       >
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
@@ -719,8 +746,9 @@ export default function Home() {
                       </CountUp>
                       <span className="about-desc">Completed projects</span>
                     </div>
+
                     <div className="about-experience">
-                      <CountUp start={0} end={2} prefix="0" duration="1">
+                      <CountUp start={0} end={2} prefix="0" duration={1}>
                         {({ countUpRef, start }) => (
                           <VisibilitySensor onChange={start} delayedCall>
                             <span className="about-year" ref={countUpRef} />
@@ -733,6 +761,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
+
             <section className="skills" id="skills">
               <>
                 <h2 className="section-title">Skills</h2>
@@ -784,6 +813,7 @@ export default function Home() {
                 </div>
               </>
             </section>
+
             <section className="work" id="work">
               <>
                 <h2 className="section-title">Work</h2>
@@ -821,6 +851,7 @@ export default function Home() {
                 </div>
               </>
             </section>
+
             <section className="contact" id="contact">
               <>
                 <h2 className="section-title">Contact</h2>
@@ -837,7 +868,7 @@ export default function Home() {
                       name="name"
                       placeholder="Name"
                       className="contact__input"
-                      required={true}
+                      required
                     />
                     <input
                       type="mail"
@@ -845,23 +876,24 @@ export default function Home() {
                       placeholder="Email"
                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                       className="contact__input"
-                      required={true}
+                      required
                     />
                     <textarea
                       name="message"
-                      id=""
-                      cols="0"
-                      rows="10"
+                      cols={0}
+                      rows={10}
                       className="contact__input"
                       placeholder="Your message here"
-                      required={true}
+                      required
                     ></textarea>
+
                     <ReCAPTCHA
                       ref={recaptchaRef}
                       sitekey="6Lf5Hr0dAAAAALIuH2ZavQv0r9CVnmkJFYhNH2VE"
                       onChange={() => setcaptchaverified(true)}
-                      onExpired={() => recaptchaRef.reset()}
+                      onExpired={() => recaptchaRef.current?.reset()}
                     />
+
                     <button className="contact_button" disabled={submitting}>
                       {submitting ? (
                         <>
@@ -883,7 +915,33 @@ export default function Home() {
           </>
         )}
       </main>
+
       <ToastContainer />
     </>
   );
+}
+
+// ------- utils -------
+function getWindowDimensions() {
+  if (typeof window != "undefined") {
+    const { innerWidth: width } = window;
+    return { width };
+  }
+  return { width: 0 };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowDimensions;
 }

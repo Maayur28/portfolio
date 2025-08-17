@@ -1,0 +1,110 @@
+<svg width="280" height="280" viewBox="0 0 320 320" aria-labelledby="t4 d4" xmlns="http://www.w3.org/2000/svg">
+  <desc id="d4">
+    Glossy 3D M with springy bounce, squash, animated lighting, and floor reflection.
+  </desc>
+  <defs>
+    <linearGradient id="frontChrome" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD0E6"/>
+      <stop offset="35%" stop-color="#FF74B1"/>
+      <stop offset="60%" stop-color="#EB0253"/>
+      <stop offset="100%" stop-color="#660028"/>
+    </linearGradient>
+    <linearGradient id="sideDepth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7E0030"/>
+      <stop offset="100%" stop-color="#43001A"/>
+    </linearGradient>
+    <linearGradient id="specBeam" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#fff" stop-opacity=".9"/>
+      <stop offset="55%" stop-color="#fff"/>
+      <stop offset="65%" stop-color="#fff" stop-opacity=".7"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+      <animate attributeName="gradientTransform" values="translate(-520,0); translate(520,0)" dur="3.6s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="fadeDown" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".6"/>
+      <stop offset="60%" stop-color="#fff" stop-opacity=".15"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="aura4" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="b"/>
+      <feFlood flood-color="#EB0253" flood-opacity=".95"/>
+      <feComposite operator="in" in2="b"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="bevel" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.6" result="map"/>
+      <feSpecularLighting in="map" surfaceScale="4" specularConstant=".6" specularExponent="25" lighting-color="#fff" result="spec">
+        <fePointLight x="-80" y="-60" z="120">
+          <animate attributeName="x" values="-120;140;-120" dur="5.8s" repeatCount="indefinite"/>
+        </fePointLight>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceGraphic" operator="in" result="specOnShape"/>
+      <feMerge>
+        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="specOnShape"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="sphere" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="40%" stop-color="#FFD6EA"/>
+      <stop offset="100%" stop-color="#FFE9F3"/>
+    </radialGradient>
+    <style>
+      .tb{transform-box:fill-box;transform-origin:center}
+    </style>
+    <path id="M4" d="M70 270V105q0-35 35-35h18q21 0 28 22l9 28 9-28q7-22 28-22h18q35 0 35 35v165h-38V140l-28 75q-10 27-24 27t-24-27l-28-75v130Z"/>
+    <mask id="reflectMask">
+      <rect width="100%" height="100%" fill="url(#fadeDown)"/>
+    </mask>
+  </defs>
+  <g id="rig" class="tb">
+    <ellipse id="shadow" cx="160" cy="288" rx="92" ry="18" fill="#2a0013" opacity=".35" class="tb">
+      <animate attributeName="rx" values="92; 100; 86; 96; 92" keyTimes="0; .25; .5; .75; 1" keySplines=".25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".35; .45; .3; .38; .35" dur="1.8s" repeatCount="indefinite"/>
+    </ellipse>
+    <g filter="url(#aura4)" class="tb">
+      <g fill="url(#sideDepth)">
+        <use href="#M4" transform="translate(16 10)"/>
+        <use href="#M4" transform="translate(12 8)"/>
+        <use href="#M4" transform="translate(8 6)"/>
+        <use href="#M4" transform="translate(4 4)"/>
+      </g>
+      <g filter="url(#bevel)">
+        <use href="#M4" fill="url(#frontChrome)"/>
+        <use href="#M4" fill="#fff" opacity=".06"/>
+      </g>
+      <clipPath id="clipFront4">
+        <use href="#M4"/>
+      </clipPath>
+      <g clip-path="url(#clipFront4)" opacity=".9">
+        <path fill="url(#specBeam)" d="M-520 0H520v320H-520z"/>
+      </g>
+    </g>
+    <g transform="translate(126 76)">
+      <circle r="21" fill="url(#sphere)"/>
+      <ellipse cx="-7" cy="-9" rx="8.5" ry="5.5" fill="#fff" opacity=".55">
+        <animate attributeName="cx" values="-10;6;-10" dur="5.8s" repeatCount="indefinite"/>
+      </ellipse>
+      <circle r="4" cx="3.2" cy="-1.2" fill="#1b1b1b"/>
+    </g>
+    <g transform="translate(214 76)">
+      <circle r="21" fill="url(#sphere)"/>
+      <ellipse cx="-7" cy="-9" rx="8.5" ry="5.5" fill="#fff" opacity=".55">
+        <animate attributeName="cx" values="-10;6;-10" dur="5.2s" repeatCount="indefinite"/>
+      </ellipse>
+      <circle r="4" cx="3.2" cy="-1.2" fill="#1b1b1b"/>
+    </g>
+    <g mask="url(#reflectMask)" opacity=".75">
+      <use href="#M4" fill="url(#frontChrome)" transform="matrix(1 0 0 -1 0 540)"/>
+      <path fill="url(#specBeam)" transform="matrix(1 0 0 -1 0 540)" opacity=".45" d="M0 0h320v320H0z"/>
+    </g>
+    <animateTransform attributeName="transform" type="translate" values="0 0; 0 -18; 0 0; 0 -9; 0 0" keyTimes="0; .28; .56; .78; 1" keySplines=".25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1" dur="1.8s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" additive="sum" type="scale" values="1 1; 1.04 .94; 1 1; 1.02 .97; 1 1" keyTimes="0; .28; .56; .78; 1" keySplines=".25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1" dur="1.8s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" additive="sum" type="rotate" values="0 160 160; -2 160 160; 0 160 160; 1 160 160; 0 160 160" keyTimes="0; .28; .56; .78; 1" keySplines=".25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1; .25 .8 .25 1" dur="1.8s" repeatCount="indefinite"/>
+  </g>
+</svg>
