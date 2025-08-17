@@ -654,7 +654,7 @@ export default function Home() {
               <h2 className="section-title">About Me</h2>
               <div className="about__container">
                 <Image
-                  src="/mlogo1.gif"
+                  src="/m-logo-animated.svg"
                   alt="myPicture"
                   width={350}
                   height={350}

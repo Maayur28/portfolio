@@ -1,0 +1,135 @@
+<!-- Eye-candy Animated "M" Logo — primary color: #EB0253 -->
+<svg width="260" height="260" viewBox="0 0 300 300" role="img" aria-labelledby="mLogoTitle mLogoDesc" xmlns="http://www.w3.org/2000/svg">
+  <title id="mLogoTitle">Animated M logo</title>
+  <desc id="mLogoDesc">Magenta M with two animated heads, glow, sparkles, and sweeping shine.</desc>
+
+  <defs>
+    <!-- Brand magenta with depth -->
+    <linearGradient id="gradMagenta" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#FF5AA2"/>
+      <stop offset="50%" stop-color="#EB0253"/>
+      <stop offset="100%" stop-color="#B40048"/>
+    </linearGradient>
+
+    <!-- Subtle inner highlight -->
+    <radialGradient id="innerLight" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".22"/>
+      <stop offset="60%" stop-color="#FFFFFF" stop-opacity=".06"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Neon glow -->
+    <filter id="pinkGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feFlood flood-color="#EB0253" flood-opacity=".9" result="flood"/>
+      <feComposite in="flood" in2="SourceAlpha" operator="in" result="glowColor"/>
+      <feGaussianBlur in="glowColor" stdDeviation="8" result="blur1"/>
+      <feGaussianBlur in="glowColor" stdDeviation="18" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft drop shadow -->
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#7a002e" flood-opacity=".35"/>
+    </filter>
+
+    <!-- Shine mask (moving diagonal beam) -->
+    <linearGradient id="shineStrip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#fff" stop-opacity="0"/>
+      <stop offset="45%"  stop-color="#fff" stop-opacity=".65"/>
+      <stop offset="55%"  stop-color="#fff" stop-opacity=".9"/>
+      <stop offset="65%"  stop-color="#fff" stop-opacity=".65"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- The M silhouette for reuse (rounded, friendly) -->
+    <path id="Mshape" d="
+      M60,260 L60,95
+      Q60,60 95,60 L113,60
+      Q132,60 138,80
+      L156,140 L174,80
+      Q180,60 199,60 L217,60
+      Q252,60 252,95 L252,260
+      L212,260 L212,126
+      L185,208
+      Q176,236 150,236
+      Q124,236 115,208
+      L88,126 L88,260 Z
+    " />
+    <clipPath id="clipM"><use href="#Mshape"/></clipPath>
+
+    <!-- Sparkle shape -->
+    <symbol id="spark">
+      <circle r="1.8" fill="#ffffff" />
+    </symbol>
+
+    <style>
+      /* Keep transforms predictable in all browsers */
+      .tbox { transform-box: fill-box; transform-origin: center; }
+
+      @keyframes gentlePulse { 0%{transform:scale(1)} 50%{transform:scale(1.015)} 100%{transform:scale(1)} }
+      @keyframes sparklePop   { 0%{opacity:0; transform:scale(0)} 10%{opacity:.9} 70%{opacity:.8} 100%{opacity:0; transform:scale(1.6)} }
+      @keyframes rotateSlight { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+    </style>
+  </defs>
+
+  <!-- BACKGROUND: nothing (transparent) -->
+
+  <!-- MAIN M -->
+  <g class="tbox" filter="url(#pinkGlow)" style="animation:gentlePulse 5s ease-in-out infinite">
+    <use href="#Mshape" fill="url(#gradMagenta)" filter="url(#shadow)"/>
+    <use href="#Mshape" fill="url(#innerLight)"/>
+  </g>
+
+  <!-- SWEEPING SHINE constrained to the M -->
+  <g clip-path="url(#clipM)" opacity=".85">
+    <g class="tbox" transform="rotate(-20 150 150)">
+      <rect x="-400" y="0" width="800" height="300" fill="url(#shineStrip)">
+        <animate attributeName="x" values="-400;400" dur="3.8s" repeatCount="indefinite" />
+      </rect>
+    </g>
+  </g>
+
+  <!-- HEADS (two friendly dots) -->
+  <g>
+    <!-- Left head -->
+    <g class="tbox" transform="translate(115,48)">
+      <g>
+        <circle r="23" fill="#ffffff"/>
+        <circle r="23" fill="none" stroke="#FF8BC1" stroke-width="4"/>
+        <circle r="4.3" cx="3.2" cy="-1.2" fill="#222"/>
+      </g>
+      <!-- gentle bob -->
+      <animateTransform attributeName="transform" type="translate"
+        values="115,48; 115,42; 115,48" dur="2.4s" repeatCount="indefinite" />
+    </g>
+
+    <!-- Right head -->
+    <g class="tbox" transform="translate(205,48)">
+      <g>
+        <circle r="23" fill="#ffffff"/>
+        <circle r="23" fill="none" stroke="#FF8BC1" stroke-width="4"/>
+        <circle r="4.3" cx="3.2" cy="-1.2" fill="#222"/>
+      </g>
+      <!-- slight phase offset -->
+      <animateTransform attributeName="transform" type="translate"
+        values="205,48; 205,43; 205,48" dur="2s" begin=".35s" repeatCount="indefinite" />
+    </g>
+  </g>
+
+  <!-- ORBITING GLINT (tiny magenta halo around the right head) -->
+  <circle cx="205" cy="48" r="30" fill="none" stroke="#EB0253" stroke-opacity=".35" stroke-width="2" class="tbox"
+          style="animation:rotateSlight 6s linear infinite" />
+
+  <!-- SPARKLES (randomized positions with staggered timings) -->
+  <g opacity=".95">
+    <use href="#spark" x="88"  y="70"  class="tbox" style="animation:sparklePop 2.6s ease-out .2s infinite"/>
+    <use href="#spark" x="240" y="88"  class="tbox" style="animation:sparklePop 3.2s ease-out .5s infinite"/>
+    <use href="#spark" x="210" y="140" class="tbox" style="animation:sparklePop 2.2s ease-out 1.2s infinite"/>
+    <use href="#spark" x="78"  y="160" class="tbox" style="animation:sparklePop 2.8s ease-out .9s infinite"/>
+    <use href="#spark" x="150" y="50"  class="tbox" style="animation:sparklePop 3.0s ease-out 1.8s infinite"/>
+  </g>
+</svg>
